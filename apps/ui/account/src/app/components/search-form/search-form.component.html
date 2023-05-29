@@ -1,0 +1,13 @@
+<form *ngIf="form" [formGroup]="form" class="w-full inline-flex grow items-center text-base sm">
+    <mat-form-field appearance="outline" class="inline-flex grow w-full" style="position: relative; top: -2px;">
+      <input
+        autocomplete="off"
+        matInput
+        formControlName="term"
+        type="text"
+      />
+      <button matSuffix [disabled]="isSaving" mat-mini-fab color="primary" (click)="search(true)">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+</form>

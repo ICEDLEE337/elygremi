@@ -1,0 +1,23 @@
+@import './configs/colors';
+
+tr.mat-row:nth-child(odd) {
+  background-color: rgb(230, 230, 230);
+}
+
+table th {
+  text-align: left;
+}
+
+td.mat-cell,
+th.mat-header-cell,
+td.mat-footer-cell {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+.clickable-table {
+  .mat-row:hover {
+    cursor: pointer;
+    background-color: darkturquoise !important;
+  }
+}

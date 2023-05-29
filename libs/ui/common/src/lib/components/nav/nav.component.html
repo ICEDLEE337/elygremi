@@ -1,0 +1,33 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav lite mat-elevation-z8"
+    fixedInViewport
+    [mode]="'side'"
+    [opened]="true"
+  >
+    <mat-toolbar class="primary top-left">
+      <div class="logo-wrap row center" [ngClass]="{water, fire}">
+        <a routerLink="" class="row"
+          ><img src="assets/oninet-logo-inverse.svg" class="logo"
+        /></a>
+      </div>
+    </mat-toolbar>
+    <mat-divider></mat-divider>
+
+    <!-- <mat-nav-list> -->
+    <div class="mat-list-item row" *ngFor="let r of routes">
+      <a
+        mat-fab
+        *ngIf="r.icon && r.path"
+        routerLinkActive="warn"
+        [routerLink]="r.path"
+        ><mat-icon>{{ r.icon }}</mat-icon></a
+      >
+    </div>
+    <!-- </mat-nav-list> -->
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

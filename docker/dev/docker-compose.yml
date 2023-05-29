@@ -1,0 +1,14 @@
+version: '3.5'
+services:
+  postgres_oninet:
+    container_name: postgres_oninet
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    ports:
+      - '5444:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+      postgres_data:

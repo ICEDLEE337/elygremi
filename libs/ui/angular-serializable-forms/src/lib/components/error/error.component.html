@@ -1,0 +1,1 @@
+<mat-error *ngIf="form?.get(name).touched || form?.get(name).dirty">{{form?.get(name)?.errors | formatError | uppercase}}</mat-error>

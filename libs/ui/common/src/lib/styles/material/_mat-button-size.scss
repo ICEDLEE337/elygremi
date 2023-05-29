@@ -1,0 +1,11 @@
+/* stylelint-disable  no-descending-specificity */
+
+a,
+button {
+  &.mat-button-base {
+    &.xl {
+      line-height: 56px !important;
+      line-height: 56px !important;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+:host {
+  .sidenav-container {
+    height: 100%;
+  }
+
+  mat-toolbar.top-left {
+    padding: 0 !important;
+
+    .logo-wrap {
+      height: 64px;
+    }
+
+    .logo {
+      width: 100%;
+      padding: 0 2px;
+      display: block;
+      box-sizing: border-box;
+    }
+  }
+
+  .sidenav {
+    width: 100px;
+  }
+
+  .sidenav .mat-toolbar {
+    background: inherit;
+  }
+
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .mat-list-item {
+    padding: 6px;
+    justify-content: center;
+  }
+}

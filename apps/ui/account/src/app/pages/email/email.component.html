@@ -1,0 +1,26 @@
+<oninet-modal-page>
+  <div *ngIf="!(busy$ | async)">
+    <h1 class="text-center" *ngIf="!success">
+      There was a problem verifying your email
+    </h1>
+    <h1 class="text-center" *ngIf="success">Your email has been validated.</h1>
+    <h2 class="text-center" *ngIf="success">
+      The next step is to create your password.
+    </h2>
+    <div class="row center" *ngIf="success">
+      <a
+        mat-raised-button
+        class="xl full-width"
+        color="primary"
+        [routerLink]="['/', 'password', hash$ | async]"
+        >Next</a
+      >
+    </div>
+  </div>
+  <div *ngIf="busy$ | async">
+    <h1 class="text-center">Validating your email...</h1>
+    <div class="row center">
+      <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+    </div>
+  </div>
+</oninet-modal-page>

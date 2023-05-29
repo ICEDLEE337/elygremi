@@ -1,0 +1,23 @@
+<oninet-modal-page>
+  <form class="mt-2" [formGroup]="formGroup">
+    <mat-form-field appearance="outline">
+      <mat-icon matPrefix>phone</mat-icon>
+      <input matInput type="text" formControlName="phone" placeholder="Phone" />
+    </mat-form-field>
+    <oninet-error name="phone" [form]="formGroup"></oninet-error>
+
+    <button
+      color="primary"
+      class="xl"
+      (click)="validatePhone(formGroup.value)"
+      [disabled]="(busy$ | async) || formGroup.invalid || formGroup.pristine"
+      mat-raised-button
+      *ngIf="!(busy$ | async)"
+    >
+      Validate Phone
+    </button>
+    <div *ngIf="busy$ | async" class="row">
+      <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+    </div>
+  </form>
+</oninet-modal-page>

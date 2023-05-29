@@ -1,0 +1,21 @@
+<div>
+    <div class="flex flex-row justify-between items-center pb-1 md:pb-4 mb-2">
+        <div class="text-2xl">Vehicle #{{data?.azVehicleId}}</div>
+        <div>
+            <ng-content></ng-content>
+        </div>
+    </div>
+    <div class="flex flex-row justify-between flex-wrap md:flex-nowrap gap-4">
+        <div class="md:w-1/2 grow w-full flex flex-row justify-center items-center">
+            <img *ngIf="data?.s3Key" [src]="data?.s3Url" />
+            <div *ngIf="!data?.s3Key" class="text-center font-bold">No Image</div>
+        </div>
+        <div class="md:w-1/2 grow">
+            <div class="py-1 md:py-4 flex flex-row justify-between border-y"><label class="pr-4 text-secondary-dark">ID:</label><div class="text-right font-bold">{{data?.azVehicleId}}</div></div>
+            <div class="py-1 md:py-4 flex flex-row justify-between border-b"><label class="pr-4 text-secondary-dark">Year:</label><div class="text-right font-bold">{{data?.vehicleYear}}</div></div>
+            <div class="py-1 md:py-4 flex flex-row justify-between border-b"><label class="pr-4 text-secondary-dark">Make:</label><div class="text-right font-bold">{{data?.vehicleMakeName}}</div></div>
+            <div class="py-1 md:py-4 flex flex-row justify-between border-b"><label class="pr-4 text-secondary-dark">Model:</label><div class="text-right font-bold">{{data?.azVehicleModelName}}</div></div>
+            <div class="py-1 md:py-4 flex flex-row justify-between border-b"><label class="pr-4 text-secondary-dark">Engine:</label><div class="text-right font-bold">{{data?.azVehicleEngineName}}</div></div>
+        </div>
+    </div>
+</div>

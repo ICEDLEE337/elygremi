@@ -1,0 +1,138 @@
+.auto {
+  flex: auto;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.just-center {
+  justify-content: center;
+}
+
+.just-between {
+  justify-content: space-between;
+}
+
+.just-around {
+  justify-content: space-around;
+}
+
+.just-flex-end {
+  justify-content: flex-end;
+}
+
+.just-stretch {
+  justify-content: stretch;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+
+  a,
+  img {
+    display: block !important;
+  }
+
+  &.center {
+    justify-content: center;
+  }
+
+  &.center {
+    justify-content: center;
+  }
+
+  &.space-between {
+    justify-content: space-between;
+  }
+
+  &.space-around {
+    justify-content: space-around;
+  }
+
+  &.flex-end {
+    justify-content: flex-end;
+  }
+
+  &.stretch {
+    justify-content: stretch;
+  }
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  a,
+  img {
+    display: block !important;
+  }
+
+  &.center {
+    align-items: center;
+  }
+
+  &.space-between {
+    align-items: space-between;
+  }
+
+  &.space-around {
+    align-items: space-around;
+  }
+
+  &.stretch {
+    justify-content: stretch;
+  }
+}
+
+.row,
+.col {
+  &.wrap {
+    flex-wrap: wrap;
+  }
+}
+
+// https://tailwindcss.com/docs/flex
+.flex { display: flex; }
+.flex-1	{ flex: 1 1 0%; }
+.flex-auto	{ flex: 1 1 auto; }
+.flex-initial	{ flex: 0 1 auto; }
+.flex-none	{ flex: none; }
+
+.flex-row	{ flex-direction: row; }
+.flex-row-reverse {	flex-direction: row-reverse; }
+.flex-col	{ flex-direction: column; }
+.flex-col-reverse	{ flex-direction: column-reverse; }
+
+.justify-start	{ justify-content: flex-start; }
+.justify-end	{ justify-content: flex-end; }
+.justify-center	{ justify-content: center; }
+.justify-between	{ justify-content: space-between; }
+.justify-around	{ justify-content: space-around; }
+.justify-evenly	{ justify-content: space-evenly; }
+
+.content-center	{ align-content: center; }
+.content-start	{ align-content: flex-start; }
+.content-end	{ align-content: flex-end; }
+.content-between	{ align-content: space-between; }
+.content-around	{ align-content: space-around; }
+.content-evenly	{ align-content: space-evenly; }
+.content-baseline	{ align-content: baseline; }
+
+.items-start	{ align-items: flex-start; }
+.items-end	{ align-items: flex-end; }
+.items-center	{ align-items: center; }
+.items-baseline	{ align-items: baseline; }
+.items-stretch	{ align-items: stretch; }

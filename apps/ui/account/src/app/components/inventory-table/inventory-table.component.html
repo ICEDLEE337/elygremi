@@ -1,0 +1,19 @@
+<div class="flex flex-row w-full font-bold items-center text-primary-light bg-primary-dark text-left">
+  <div class="hidden md:flex grow w-1/6 flex-row space-between items-center">
+    <div class="px-6 flex flex-row grow justify-start"><ng-content></ng-content></div>
+  </div>
+  <div class="hidden md:block p-6 grow w-1/6">Id</div>
+  <div class="p-6 grow w-1/6">Year</div>
+  <div class="p-6 grow w-1/6">Make Name</div>
+  <div class="p-6 grow w-1/6">Model Name</div>
+  <div class="p-6 grow w-1/6">Engine Name</div>
+
+</div>
+<div *ngFor="let i of inventory" class="flex border-t border-dashed flex-row w-full items-center bg-primary-light transform transition duration-100 cursor-pointer hover:font-bold  hover:drop-shadow-2xl hover:bg-primary hover:text-primary-light text-left">
+  <div class="hidden md:inline-flex ht-64 grow w-1/6 items-stretch justify-center"><img class="block" *ngIf="i.s3Key" [src]="i.s3Url"/></div>
+  <div class="hidden md:block p-6 grow w-1/6" (click)="navigateTo(i)">{{i.azVehicleId}}</div>
+  <div class="p-6 grow w-1/6" (click)="navigateTo(i)">{{i.vehicleYear}}</div>
+  <div class="p-6 grow w-1/6" (click)="navigateTo(i)">{{i.vehicleMakeName}}</div>
+  <div class="p-6 grow w-1/6" (click)="navigateTo(i)">{{i.azVehicleModelName}}</div>
+  <div class="p-6 grow w-1/6" (click)="navigateTo(i)">{{i.azVehicleEngineName}}</div>
+</div>

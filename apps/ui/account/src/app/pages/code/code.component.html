@@ -1,0 +1,32 @@
+<oninet-modal-page>
+  <h1 class="text-center" *ngIf="!codeValidated">
+    Please enter the code that you received.
+  </h1>
+  <h1 class="text-center" *ngIf="codeValidated">
+    Your phone number has been validated.
+  </h1>
+  <h1 class="text-center" *ngIf="codeValidated">
+    Now you can create your password and login.
+  </h1>
+  <form class="mt-2" [formGroup]="formGroup" *ngIf="!codeValidated">
+    <mat-form-field appearance="outline">
+      <mat-icon matPrefix>pin</mat-icon>
+      <input matInput type="text" formControlName="code" placeholder="Code" />
+    </mat-form-field>
+    <oninet-error name="code" [form]="formGroup"></oninet-error>
+
+    <button
+      color="primary"
+      class="xl"
+      (click)="validateCode(formGroup.value)"
+      [disabled]="(busy$ | async) || formGroup.invalid || formGroup.pristine"
+      mat-raised-button
+      *ngIf="!(busy$ | async)"
+    >
+      Validate Code
+    </button>
+    <div *ngIf="busy$ | async" class="row">
+      <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+    </div>
+  </form>
+</oninet-modal-page>

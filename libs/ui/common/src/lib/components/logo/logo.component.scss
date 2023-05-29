@@ -1,0 +1,16 @@
+:host {
+  .logo {
+    min-height: 32px;
+    min-width: 32px;
+
+    @media screen and (min-width: 600px) {
+      min-height: 48px;
+      min-width: 48px;
+    }
+
+    @media screen and (min-width: 800px) {
+      min-height: 64px;
+      min-width: 64px;
+    }
+  }
+}

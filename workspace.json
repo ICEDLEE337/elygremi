@@ -1,0 +1,18 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "api-account": "apps/api/account",
+    "cli-oninet": "apps/cli/oninet",
+    "generated-account": "libs/generated/account",
+    "lib-api-configuration": "libs/api/configuration",
+    "lib-api-feature-account": "libs/api/feature-account",
+    "lib-api-feature-html": "libs/api/feature-html",
+    "lib-api-feature-inventory": "libs/api/feature-inventory",
+    "lib-api-feature-user": "libs/api/feature-user",
+    "lib-api-repository-oninet": "libs/api/repository-oninet",
+    "lib-ui-angular-serializable-forms": "libs/ui/angular-serializable-forms",
+    "lib-ui-common": "libs/ui/common",
+    "ui-account": "apps/ui/account"
+  }
+}

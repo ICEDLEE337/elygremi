@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '../../../../libs/ui/common/src/lib/styles/common.scss';
+
+.cubed {
+  background-image: url('assets/swirl.jpeg');
+}
+
+body:not(.cubed) {
+  background-color: rgb(224, 227, 232);
+}

@@ -1,0 +1,18 @@
+@import './configs/colors';
+
+.mat-form-field {
+    [readonly] {
+        color: $dark-disabled-text;
+    }
+}
+
+mat-form-field, .mat-form-field {
+    width: 100% !important;
+}
+
+.sm {
+.mat-form-field-wrapper {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}

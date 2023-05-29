@@ -1,0 +1,44 @@
+<form method="post" enctype="multipart/form-data">
+  <input
+    type="file"
+    class="file-input"
+    [accept]="extensions"
+    (change)="onFileSelected($event)"
+    multiple
+    #fileUpload
+  />
+
+  <div
+    dragAndDrop
+    (drop)="onDrop($event)"
+    class="border-dashed rounded border-2"
+  >
+    <mat-list class="my-2">
+      <mat-list-item
+        *ngIf="!filenames?.length"
+        class="mat-body-2 opacity-33 text-center justify-self-center grow"
+        >Drag files here or click the button below to browse</mat-list-item
+      >
+      <mat-list-item *ngFor="let f of filenames">
+        <button color="accent" class="mr-1" (click)="onFileRemoved(f)"
+          ><mat-icon>cancel</mat-icon></button
+        >
+        {{ f }}
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <div class="mat-caption">Supported file extensions: {{ extensions }}</div>
+  <div class="flex flex-row justify-between my-1 gap-4 w-full">
+    <ng-content></ng-content>
+    <button
+      *ngIf="!hideBrowseButton"
+      mat-raised-button
+      color="primary"
+      (click)="fileUpload.click()"
+      [disabled]="limit && filenames?.length && filenames.length >= limit"
+    >
+      <mat-icon>{{ icon }}</mat-icon> {{ label }}
+    </button>
+  </div>
+</form>

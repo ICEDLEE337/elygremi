@@ -1,0 +1,48 @@
+<div class="text-2xl mb-2">
+  <ng-container *ngIf="(exists$ | async); else create">Edit Vehicle #{{data?.azVehicleId}}</ng-container>
+  <ng-template #create class="text-lg">Add a New Vehicle</ng-template>
+</div>
+
+<form *ngIf="form" [formGroup]="form" class="w-100 flex flex-col items-stretch">
+  <div class="w-100 flex flex-row flex-wrap justify-between">
+    <dyna-field appearance="fill" class="pb-2 w-1/2 md:w-full" label="ID" type="text" field="azVehicleId" [readOnly]="data?.azVehicleId" [form]="form"></dyna-field>
+    <dyna-field appearance="fill" class="pb-2 w-1/2 md:w-full" label="Year" type="number" field="vehicleYear" [form]="form"></dyna-field>
+    <dyna-field appearance="fill" class="pb-2 w-1/2 md:w-full" label="Make" type="text" field="vehicleMakeName" [form]="form"></dyna-field>
+    <dyna-field appearance="fill" class="pb-2 w-1/2 md:w-full" label="Model" type="text" field="azVehicleModelName" [form]="form"></dyna-field>
+    <dyna-field appearance="fill" class="pb-2 w-full" label="Engine" type="text" field="azVehicleEngineName" [form]="form"></dyna-field>
+  </div>
+</form>
+<ng-container *ngIf="!uploaderVisible">
+  <div class="flex flex-row justify-between py-1 items-center border-y">
+    <ng-container *ngIf="formData">
+      <div>
+        {{(files || [])[0].name}}
+      </div>
+      <button mat-button (click)="onDetach(true)">Change Image</button>
+    </ng-container>
+    <ng-container *ngIf="!formData">
+      <div *ngIf="!data?.s3Key"></div>
+      <img *ngIf="data?.s3Key" [src]="data?.s3Url" class="ht-64" />
+      <button mat-stroked-button (click)="uploaderVisible = true">{{data?.s3Key ? 'Change' : 'Add'}} Image</button>
+    </ng-container>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="uploaderVisible">
+  <div class="flex flex-row justify-between py-1 items-center border-y">
+    <oninet-file-upload (fileChange)="onAttach($event)" extensions=".jpg,.jpeg,.png, .gif" label="Browse"
+      [hideBrowseButton]="!!formData">
+      <div class="flex flex-row gap-4">
+        <button mat-raised-button color="primary" class="self-end" (click)="uploaderVisible = false"
+          [disabled]="!formData">Use this Image</button>
+        <button mat-stroked-button color="accent" class="self-end"
+          (click)="onDetach(false)">Cancel</button>
+      </div>
+    </oninet-file-upload>
+  </div>
+</ng-container>
+
+<div class="pt-1 flex flex-row gap-4" *ngIf="!uploaderVisible">
+  <button mat-stroked-button (click)="close()" [disabled]="isSaving"><mat-icon>close</mat-icon> Close</button>
+  <button mat-raised-button color="primary" [disabled]="!dirty || form?.invalid || isSaving" (click)="_save()"><mat-icon>save</mat-icon> Save</button>
+</div>

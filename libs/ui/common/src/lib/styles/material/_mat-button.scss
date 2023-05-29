@@ -1,0 +1,8 @@
+a,
+button {
+  &.mat-button-base {
+    &[disabled] {
+      cursor: not-allowed;
+    }
+  }
+}

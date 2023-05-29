@@ -1,0 +1,56 @@
+@use '@angular/material' as mat;
+@import 'material/configs/colors';
+@import 'material/index';
+@import 'common/flex';
+@import 'common/form';
+@import 'common/height';
+@import 'common/margin';
+@import 'common/padding';
+@import 'common/width';
+
+$unit: 16px;
+
+html,
+body {
+  height: 100%;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.mat-h1, .mat-h2, .mat-h3, .mat-h4, h1, h2, h3, h4 {
+  .mat-icon {
+    position: relative;
+    top: 3px;
+  }
+}
+
+.shadow-1 {
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+}
+
+.shadow-3 {
+  filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.2));
+}
+
+.shadow-8 {
+  filter: drop-shadow(8px 8px 8px rgba(0, 0, 0, 0.2));
+}
+
+h1,
+h2,
+h3,
+h4 {
+  .mat-form-field, .mat-form-field-infix, .mat-form-field-wrapper {
+     font-size: 14px !important;
+  }
+}

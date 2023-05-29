@@ -1,0 +1,9 @@
+<button mat-raised-button
+  color="primary"
+  (click)="click$$.next(true)"
+  [disabled]="disabled$ | async"
+  [style]="{padding: (busy$ | async) ? '0' : undefined, height: '32px'}"
+  >
+  <mat-progress-bar style="height: 32px; border-radius: 4px;" mode="indeterminate" *ngIf="busy$ | async"></mat-progress-bar>
+  <ng-content *ngIf="!(busy$ | async)"></ng-content>
+</button>

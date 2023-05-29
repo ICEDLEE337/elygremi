@@ -1,0 +1,28 @@
+<ng-container *ngIf="data">
+  <table
+    mat-table
+    [dataSource]="data$ | async"
+    class="mat-elevation-z8"
+    [formGroup]="form"
+  >
+    <ng-container *ngFor="let column of columns" [matColumnDef]="column">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-form-field>
+          <mat-icon matPrefix>filter_alt</mat-icon>
+          <input
+            matInput
+            [formControlName]="column"
+            [placeholder]="column | title"
+          />
+        </mat-form-field>
+      </th>
+      <ng-container>
+        <td mat-cell *matCellDef="let element">
+          {{ element[column] | optionalDate: 'YYYY-MM-dd' }}
+        </td>
+      </ng-container>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+  </table>
+</ng-container>

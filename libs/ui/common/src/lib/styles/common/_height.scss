@@ -1,0 +1,44 @@
+.vh-100 {
+  box-sizing: border-box;
+  min-height: 100vh !important;
+}
+
+.full-height {
+  height: 100%;
+  display: block;
+  box-sizing: border-box;
+}
+
+.ht-64 {
+  height: 64px;
+  box-sizing: border-box;
+}
+
+.scroll-y {
+  overflow-y: scroll;
+}
+
+.vh-80-max {
+  box-sizing: border-box;
+  height: 80vh !important;
+  overflow-y: scroll;
+}
+
+.vh-70-max {
+  box-sizing: border-box;
+  height: 70vh !important;
+  overflow-y: scroll;
+}
+
+
+.vh-60-max {
+  box-sizing: border-box;
+  height: 60vh !important;
+  overflow-y: scroll;
+}
+
+.vh-title-and-buttons {
+  box-sizing: border-box;
+  height: calc(100vh - 56px - 12px - 52px - 64px - 12px) !important;
+  overflow-y: scroll;
+}

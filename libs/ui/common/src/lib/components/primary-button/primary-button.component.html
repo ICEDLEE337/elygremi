@@ -1,0 +1,4 @@
+<button mat-raised-button color="primary" (click)="emitClick($event)" [disabled]="disabled" style="height: 32px;" [style]="{padding: busy ? 0 : undefined}">
+  <mat-progress-bar style="height: 32px; border-radius: 4px;" mode="indeterminate" *ngIf="busy"></mat-progress-bar>
+  <ng-content *ngIf="!busy"></ng-content>
+</button>

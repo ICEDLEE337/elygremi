@@ -1,0 +1,2 @@
+<oninet-inventory-card *ngIf="!data?.isEditing" [data]="data?.value"><button color="primary" mat-stroked-button (click)="data.isEditing = true"><mat-icon>edit</mat-icon> Edit</button></oninet-inventory-card>
+<oninet-inventory-form *ngIf="data?.isEditing" [data]="data?.value"></oninet-inventory-form>

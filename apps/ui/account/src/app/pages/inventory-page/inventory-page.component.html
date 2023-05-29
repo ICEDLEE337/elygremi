@@ -1,0 +1,57 @@
+<mat-toolbar class="mat-elevation-z8">
+  <div class="flex flex-row justify-between items-center w-full gap-4">
+
+    <div class="inline-flex header items-center justify-start gap-4">
+      <oninet-logo></oninet-logo>
+      <h1 class="hidden md:block">ONIVORO.NET</h1>
+    </div>
+
+    <oninet-search-form class="w-full grow"></oninet-search-form>
+
+    <button class="justify-self-end" color="accent" mat-mini-fab [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+
+    <mat-menu #menu="matMenu">
+      <!-- <ng-container *ngIf="user">
+        <div class="mb-1 p-2" mat-list-item>
+          <div class="mat-body-2">{{user.email}}</div>
+          <div>{{user.phone}}</div>
+        </div>
+      </ng-container> -->
+      <a mat-menu-item href="https://www.autozone.com/vin-decoder" target="_blank"><mat-icon>search</mat-icon>VIN Lookup</a>
+      <a mat-menu-item href="https://vingenerator.org" target="_blank"><mat-icon>draw_abstract</mat-icon>VIN Generator</a>
+      <a mat-menu-item href="https://picsum.photos/" target="_blank"><mat-icon>photo_library</mat-icon>Vehicle Images</a>
+      <a mat-menu-item [href]="doxUrl" target="_blank"><mat-icon>code</mat-icon>API Documentation</a>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="logout()"><mat-icon color="accent">logout</mat-icon> Sign out</button>
+    </mat-menu>
+
+  </div>
+</mat-toolbar>
+
+<div class="w-full pt-2">
+
+  <div class="px-2 md:px-6 flex flex-row items-center justify-between">
+    <div class="text-3xl">Inventory</div>
+    <button mat-stroked-button color="primary" (click)="create()"><mat-icon>add</mat-icon> Add Vehicle</button>
+  </div>
+
+  <div class="mt-2 md:p-6">
+    <oninet-inventory-table
+      [inventory]="inventorySearchService.data$ | async"
+      [loading]="inventorySearchService.loading$ | async"
+      >
+    </oninet-inventory-table>
+    <mat-divider></mat-divider>
+    <mat-paginator
+    #paginator
+    [length]="inventorySearchService.total$ | async"
+    [pageSize]="inventorySearchService.pageSize$ | async"
+    [disabled]="false"
+    (page)="inventorySearchService.search($event.pageIndex)"
+    [showFirstLastButtons]="true"
+    [hidePageSize]="false"
+    [pageIndex]="inventorySearchService.page$ | async"
+    >
+    </mat-paginator>
+  </div>
+</div>

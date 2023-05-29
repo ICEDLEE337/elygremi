@@ -1,0 +1,45 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import 'palettes';
+
+$primary-light-theme: (
+  color: (
+    primary: $oninet-primary-palette,
+    accent: $oninet-accent-palette,
+    warn: $oninet-warn-palette,
+    foreground: (
+      base: black,
+      divider: $dark-dividers,
+      dividers: $dark-dividers,
+      disabled: $dark-disabled-text,
+      disabled-button: rgba(black, 0.26),
+      disabled-text: $dark-disabled-text,
+      elevation: black,
+      hint-text: $dark-disabled-text,
+      secondary-text: $dark-secondary-text,
+      icon: rgba(black, 0.54),
+      icons: rgba(black, 0.54),
+      text: rgba(black, 0.5),
+      slider-min: rgba(black, 0.87),
+      slider-off: rgba(black, 0.26),
+      slider-off-active: rgba(black, 0.38),
+    ),
+    background: (
+      status-bar: map.get($grey-palette, 300),
+      app-bar: map.get($grey-palette, 100),
+      background: map.get($grey-palette, 50),
+      hover: rgba(black, 0.04),
+      card: white,
+      dialog: white,
+      disabled-button: rgba(black, 0.12),
+      raised-button: white,
+      focused-button: $dark-focused,
+      selected-button: map.get($grey-palette, 300),
+      selected-disabled-button: map.get($grey-palette, 400),
+      disabled-button-toggle: map.get($grey-palette, 200),
+      unselected-chip: map.get($grey-palette, 300),
+      disabled-list-option: map.get($grey-palette, 200),
+      tooltip: map.get($grey-palette, 700),
+    ),
+  ),
+);

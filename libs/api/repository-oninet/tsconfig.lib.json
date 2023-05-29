@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../../dist/out-tsc",
+    "declaration": true,
+    "types": [],
+    "target": "es6"
+  },
+  "include": ["**/*.ts", "src/lib/migrations/1676835517112-add-stripe-tablets", "src/lib/migrations/1688375781235-add-report-message-attachment-tablets"],
+  "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
+}

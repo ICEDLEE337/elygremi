@@ -1,0 +1,39 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strictPropertyInitialization": false,
+    "esModuleInterop": true,
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ESNext",
+    "typeRoots": ["node_modules/@types"],
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@oninet/api/configuration": ["libs/api/configuration/src/index.ts"],
+      "@oninet/api/feature-account": ["libs/api/feature-account/src/index.ts"],
+      "@oninet/api/feature-html": ["libs/api/feature-html/src/index.ts"],
+      "@oninet/api/feature-inventory": [
+        "libs/api/feature-inventory/src/index.ts"
+      ],
+      "@oninet/api/feature-user": ["libs/api/feature-user/src/index.ts"],
+      "@oninet/api/repository-oninet": [
+        "libs/api/repository-oninet/src/index.ts"
+      ],
+      "@oninet/generated/account": ["libs/generated/account/src/index.ts"],
+      "@oninet/ui/angular-serializable-forms": [
+        "libs/ui/angular-serializable-forms/src/index.ts"
+      ],
+      "@oninet/ui/common": ["libs/ui/common/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

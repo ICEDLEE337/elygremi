@@ -1,0 +1,9 @@
+{
+  "name": "api-account",
+  "version": "1.1.4",
+  "dependencies": {
+    "@onivoro/isomorphic-common": "0.0.2",
+    "pg": "^8.8.0"
+  },
+  "main": "main.js"
+}

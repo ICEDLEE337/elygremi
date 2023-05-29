@@ -1,0 +1,29 @@
+<oninet-modal-page>
+  <h1 class="text-center" *ngIf="resetSubmitted">An email will be sent to {{email}} if it exists in our system</h1>
+  <form [formGroup]="formGroup" *ngIf="!resetSubmitted">
+    <mat-form-field appearance="outline">
+      <mat-icon matPrefix>email</mat-icon>
+      <input
+        matInput
+        type="email"
+        formControlName="email"
+        placeholder="Email"
+      />
+    </mat-form-field>
+    <oninet-error name="email" [form]="formGroup"></oninet-error>
+
+    <button
+      color="primary"
+      class="xl"
+      (click)="reset(formGroup.value)"
+      [disabled]="(busy$ | async) || formGroup.invalid || formGroup.pristine"
+      mat-raised-button
+      *ngIf="!(busy$ | async)"
+    >
+      Reset Password
+    </button>
+    <div *ngIf="busy$ | async" class="row">
+      <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+    </div>
+  </form>
+</oninet-modal-page>
