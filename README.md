@@ -56,7 +56,7 @@ The apps directory has one API application and one UI application.
 
 ## Application Premise
 
-This is a contrived application that approximates an inventory application. The context is vehicle information because sample vehicle information was easy to find online, but from the UI forms all the way down to the database tables could be easily modified to match a more generic (or specific) inventory application.
+This is a contrived application that approximates an inventory application. The context is vehicle information because sample vehicle information was easy to find online, but --from the UI forms all the way down to the database tables-- this app could be easily modified to match a more generic (or specific) inventory application.
 
 Random data is generated online and pasted into the API documentation or added through the UI application form.
 
