@@ -41,7 +41,7 @@ The UI is served by the API. This is suboptimal from a performance standpoint bu
 #### Database
 The database is a serverless Postgres instance and is accessed from application logic via TypeORM.
 
-### Uploads
+#### Uploads
 The uploaded images are stored in an encrypted, private S3 bucket. They cannot be accessed outside the context of the web application. In order to display them in the browser to the we app users, the API preauthorizes them thereby making them able to be accessed at a specific, unique URL for a short (configurable) period of time.
 
 ## Source Code Directory Structure
@@ -53,3 +53,15 @@ The apps directory has one API application and one UI application.
 - The UI, which communicates with the server is available at https://account.onivoro.net
 - The server is accessible as an API at https://account.onivoro.net/api
 - The server also serves executable API documentation which is accessible at https://account.onivoro.net/dox (only the "public" endpoints can be executed from this document)
+
+## Application Premise
+
+This is a contrived application that approximates an inventory application. The context is vehicle information because sample vehicle information was easy to find online, but from the UI forms all the way down to the database tables could be easily modified to match a more generic (or specific) inventory application.
+
+Random data is generated online and pasted into the API documentation or added through the UI application form.
+
+App features:
+- File uploads with encryption and access control
+- Database persistence and search
+- Account registration and JWT bearer-token authenticated endpoints as well as public endpoints (which is to simulate the fact that access control can be different for the API, but more realistically we would add an API key for the API access instead of leaving it publicly accessible as it is in this demo)
+- Generally responsive UI
