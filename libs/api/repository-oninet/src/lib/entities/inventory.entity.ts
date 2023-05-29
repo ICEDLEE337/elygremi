@@ -6,6 +6,10 @@ import { User } from './user.entity';
 export class Inventory {
   @ApiProperty()
   @PrimaryColumn({ nullable: false })
+  id: string
+
+  @ApiPropertyOptional()
+  @Column({ nullable: true })
   azVehicleId: string;
 
   @ApiPropertyOptional()

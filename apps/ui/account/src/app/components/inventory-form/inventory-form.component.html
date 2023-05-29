@@ -1,5 +1,5 @@
 <div class="text-2xl mb-2">
-  <ng-container *ngIf="(exists$ | async); else create">Edit Vehicle #{{data?.azVehicleId}}</ng-container>
+  <ng-container *ngIf="(exists$ | async); else create">Edit Vehicle #{{data?.id}}</ng-container>
   <ng-template #create class="text-lg">Add a New Vehicle</ng-template>
 </div>
 

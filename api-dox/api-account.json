@@ -109,7 +109,7 @@
     },
     "/api/file/{key}": {
       "get": {
-        "operationId": "__download",
+        "operationId": "FileController_download",
         "parameters": [
           {
             "name": "key",
@@ -136,7 +136,7 @@
     },
     "/api/file/key/{key}": {
       "get": {
-        "operationId": "__downloadByKey",
+        "operationId": "FileController_downloadByKey",
         "parameters": [
           {
             "name": "key",
@@ -163,14 +163,14 @@
     },
     "/api/user-claim": {
       "post": {
-        "operationId": "__post",
+        "operationId": "UserClaimController_post",
         "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/a"
+                "$ref": "#/components/schemas/UserIdDto"
               }
             }
           }
@@ -181,7 +181,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/a"
+                  "$ref": "#/components/schemas/UserClaimDto"
                 }
               }
             }
@@ -191,7 +191,7 @@
     },
     "/api/user-info": {
       "get": {
-        "operationId": "l_get",
+        "operationId": "UserInfoController_get",
         "parameters": [],
         "responses": {
           "default": {
@@ -199,7 +199,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/l"
+                  "$ref": "#/components/schemas/User"
                 }
               }
             }
@@ -209,7 +209,7 @@
     },
     "/api/user-info/access-token": {
       "get": {
-        "operationId": "l_getAccessToken",
+        "operationId": "UserInfoController_getAccessToken",
         "parameters": [],
         "responses": {
           "default": {
@@ -227,7 +227,7 @@
     },
     "/api/user/invitation/{hash}": {
       "get": {
-        "operationId": "c_get",
+        "operationId": "UserInvitationController_get",
         "parameters": [
           {
             "name": "hash",
@@ -244,7 +244,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/d"
+                  "$ref": "#/components/schemas/Invitation"
                 }
               }
             }
@@ -254,7 +254,7 @@
     },
     "/api/user/invitation": {
       "post": {
-        "operationId": "c_post",
+        "operationId": "UserInvitationController_post",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -272,7 +272,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/d"
+                  "$ref": "#/components/schemas/Invitation"
                 }
               }
             }
@@ -282,7 +282,7 @@
     },
     "/api/user/invitation/{hash}/password": {
       "put": {
-        "operationId": "c_putPassword",
+        "operationId": "UserInvitationController_putPassword",
         "parameters": [
           {
             "name": "hash",
@@ -309,7 +309,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/d"
+                  "$ref": "#/components/schemas/Invitation"
                 }
               }
             }
@@ -319,7 +319,7 @@
     },
     "/api/user/password-reset/{hash}": {
       "get": {
-        "operationId": "__get",
+        "operationId": "UserPasswordResetController_get",
         "parameters": [
           {
             "name": "hash",
@@ -336,7 +336,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/d"
+                  "$ref": "#/components/schemas/PasswordReset"
                 }
               }
             }
@@ -344,7 +344,7 @@
         }
       },
       "put": {
-        "operationId": "__put",
+        "operationId": "UserPasswordResetController_put",
         "parameters": [
           {
             "name": "hash",
@@ -371,7 +371,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/d"
+                  "$ref": "#/components/schemas/PasswordReset"
                 }
               }
             }
@@ -381,7 +381,7 @@
     },
     "/api/user/password-reset": {
       "post": {
-        "operationId": "__post",
+        "operationId": "UserPasswordResetController_post",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -399,7 +399,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/d"
+                  "$ref": "#/components/schemas/PasswordReset"
                 }
               }
             }
@@ -409,7 +409,7 @@
     },
     "/api/inventory/dashboard": {
       "get": {
-        "operationId": "b_getDashboard",
+        "operationId": "InventoryController_getDashboard",
         "parameters": [
           {
             "name": "search",
@@ -436,7 +436,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/n"
+                  "$ref": "#/components/schemas/InventorySearchDto"
                 }
               }
             }
@@ -446,7 +446,7 @@
     },
     "/api/inventory/{id}": {
       "get": {
-        "operationId": "b_get",
+        "operationId": "InventoryController_get",
         "parameters": [
           {
             "name": "id",
@@ -463,7 +463,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/d"
+                  "$ref": "#/components/schemas/Inventory"
                 }
               }
             }
@@ -471,7 +471,7 @@
         }
       },
       "put": {
-        "operationId": "b_put",
+        "operationId": "InventoryController_put",
         "parameters": [
           {
             "name": "id",
@@ -487,7 +487,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/d"
+                "$ref": "#/components/schemas/Inventory"
               }
             }
           }
@@ -498,7 +498,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/d"
+                  "$ref": "#/components/schemas/Inventory"
                 }
               }
             }
@@ -508,7 +508,7 @@
     },
     "/api/inventory": {
       "get": {
-        "operationId": "b_index",
+        "operationId": "InventoryController_index",
         "parameters": [],
         "responses": {
           "default": {
@@ -518,7 +518,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/d"
+                    "$ref": "#/components/schemas/Inventory"
                   }
                 }
               }
@@ -527,14 +527,14 @@
         }
       },
       "post": {
-        "operationId": "b_post",
+        "operationId": "InventoryController_post",
         "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/d"
+                "$ref": "#/components/schemas/Inventory"
               }
             }
           }
@@ -545,7 +545,118 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/d"
+                  "$ref": "#/components/schemas/Inventory"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/public/inventory/dashboard": {
+      "get": {
+        "operationId": "PublicInventoryController_getDashboard",
+        "parameters": [
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "schema": {}
+          },
+          {
+            "name": "pagesize",
+            "required": false,
+            "in": "query",
+            "schema": {}
+          },
+          {
+            "name": "pagingkey",
+            "required": false,
+            "in": "query",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InventorySearchDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/public/inventory/{id}": {
+      "get": {
+        "operationId": "PublicInventoryController_get",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Inventory"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/public/inventory": {
+      "get": {
+        "operationId": "PublicInventoryController_index",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Inventory"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "PublicInventoryController_post",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Inventory"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Inventory"
                 }
               }
             }
@@ -555,7 +666,7 @@
     }
   },
   "info": {
-    "title": "c",
+    "title": "ApiAccountModule",
     "description": "",
     "version": "1.0.0",
     "contact": {}
@@ -643,7 +754,18 @@
           "url"
         ]
       },
-      "a": {
+      "UserIdDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userId"
+        ]
+      },
+      "UserClaimDto": {
         "type": "object",
         "properties": {
           "roles": {
@@ -657,7 +779,7 @@
           "roles"
         ]
       },
-      "l": {
+      "User": {
         "type": "object",
         "properties": {
           "id": {
@@ -745,9 +867,102 @@
           "cognito:groups"
         ]
       },
-      "d": {
+      "Invitation": {
         "type": "object",
         "properties": {
+          "email": {
+            "type": "string"
+          },
+          "hash": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "emailValid": {
+            "type": "boolean"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "hash"
+        ]
+      },
+      "EmailDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "isAnon": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "PasswordDto": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string"
+          },
+          "confirm": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "password",
+          "confirm"
+        ]
+      },
+      "PasswordReset": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "hash": {
+            "type": "string"
+          },
+          "emailValid": {
+            "type": "boolean"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "hash"
+        ]
+      },
+      "Inventory": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
           "azVehicleId": {
             "type": "string"
           },
@@ -788,50 +1003,21 @@
             "type": "string"
           },
           "user": {
-            "$ref": "#/components/schemas/l"
+            "$ref": "#/components/schemas/User"
           }
         },
         "required": [
-          "azVehicleId",
+          "id",
           "user"
         ]
       },
-      "EmailDto": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string"
-          },
-          "isAnon": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "email"
-        ]
-      },
-      "PasswordDto": {
-        "type": "object",
-        "properties": {
-          "password": {
-            "type": "string"
-          },
-          "confirm": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "password",
-          "confirm"
-        ]
-      },
-      "n": {
+      "InventorySearchDto": {
         "type": "object",
         "properties": {
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/d"
+              "$ref": "#/components/schemas/Inventory"
             }
           },
           "pagingKey": {

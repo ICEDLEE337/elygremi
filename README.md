@@ -62,6 +62,6 @@ Random data is generated online and pasted into the API documentation or added t
 
 App features:
 - File uploads with encryption and access control
-- Database persistence and search
+- Database persistence, paging, and search
 - Account registration and JWT bearer-token authenticated endpoints as well as public endpoints (which is to simulate the fact that access control can be different for the API, but more realistically we would add an API key for the API access instead of leaving it publicly accessible as it is in this demo)
 - Generally responsive UI

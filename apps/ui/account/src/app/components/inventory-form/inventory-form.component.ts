@@ -78,8 +78,8 @@ export class InventoryFormComponent {
   async _save() {
       this.isSaving = true;
 
-      if (this.data.azVehicleId) {
-        await this.multipartContentClientSvc.putFilesAndData(this.formData || new FormData(), `inventory/${this.data.azVehicleId}`, this.form.value);
+      if (this.data.id) {
+        await this.multipartContentClientSvc.putFilesAndData(this.formData || new FormData(), `inventory/${this.data.id}`, this.form.value);
       } else {
         await this.multipartContentClientSvc.postFilesAndData(this.formData || new FormData(), `inventory`, this.form.value);
       }
@@ -92,7 +92,7 @@ export class InventoryFormComponent {
   }
 
   private _buildForm(): FormGroup<any> {
-    this.exists$$.next(!!this.data?.azVehicleId);
+    this.exists$$.next(!!this.data?.id);
     const form = this.fb.group({
       azVehicleId: new FormControl(this.data?.azVehicleId, {validators: [Validators.required]}),
       vehicleYear: new FormControl(this.data?.vehicleYear, {validators: [Validators.required, Validators.min(1964), Validators.max(new Date().getFullYear())]}),

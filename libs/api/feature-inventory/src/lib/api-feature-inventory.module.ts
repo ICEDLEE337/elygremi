@@ -6,9 +6,10 @@ import { ServerAwsS3Module } from '@onivoro/server-aws-s3';
 import { configureEnv } from '@oninet/api/configuration';
 import { ImageUploadService } from './services/image-upload.service';
 import { InventoryService } from './services/inventory.service';
+import { PublicInventoryController } from './controllers/public-inventory.controller';
 
 @Module(moduleFactory({
-  controllers: [InventoryController],
+  controllers: [InventoryController, PublicInventoryController],
   providers: [ImageUploadService, InventoryService],
   imports: [RepositoryOninetModule.configure(), ServerAwsS3Module.configure({...configureEnv(), AWS_BUCKET: configureEnv().AWS_BUCKET_UPLOADS})]
 }))

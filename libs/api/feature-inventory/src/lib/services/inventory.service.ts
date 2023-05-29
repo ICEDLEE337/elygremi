@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { Inventory, InventoryRepository } from "@oninet/api/repository-oninet";
 import { S3Service } from "@onivoro/server-aws-s3";
 import { ImageUploadService } from "./image-upload.service";
+import { v4 } from "uuid";
 
 @Injectable()
 export class InventoryService {
@@ -9,27 +10,27 @@ export class InventoryService {
 
     async post(inventory: Inventory, file?: Express.Multer.File): Promise<Inventory> {
 
-        const persistedInventoryRecord = await this.inventoryRepo.postOne(inventory);
+        const persistedInventoryRecord = await this.inventoryRepo.postOne({...inventory, id: v4()});
 
         return await this.imageUploadSvc.putInventoryImageByInventoryId(
-            persistedInventoryRecord.azVehicleId,
+            persistedInventoryRecord.id,
             [file]
         );
     }
 
-    async put(azVehicleId: string, body: Inventory, file?: Express.Multer.File): Promise<Inventory> {
+    async put(id: string, body: Inventory, file?: Express.Multer.File): Promise<Inventory> {
         if (file) {
             await this.imageUploadSvc.putInventoryImageByInventoryId(
-                azVehicleId,
+                id,
                 [file]
             );
         }
 
         if (Object.keys(body || {}).length) {
-            await this.inventoryRepo.put({ azVehicleId }, body);
+            await this.inventoryRepo.put({ id }, body);
         }
 
-        return await this.get(azVehicleId);
+        return await this.get(id);
     }
 
     async getDashboard(pagingKey: string, search: string, pageSize: number) {
@@ -42,8 +43,8 @@ export class InventoryService {
         return {...inventoryResponse, data: await Promise.all(inventoryResponse.data.map(i => this.presign(i))) };
     }
 
-    async get(azVehicleId: string) {
-        return this.presign(await this.inventoryRepo.getOne({ where: { azVehicleId } }));
+    async get(id: string) {
+        return this.presign(await this.inventoryRepo.getOne({ where: { id } }));
     }
 
     async index(): Promise<Inventory[]> {

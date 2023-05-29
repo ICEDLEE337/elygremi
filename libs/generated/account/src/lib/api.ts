@@ -220,7 +220,13 @@ export interface Inventory {
      * @type {string}
      * @memberof Inventory
      */
-    'azVehicleId': string;
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Inventory
+     */
+    'azVehicleId'?: string;
     /**
      * 
      * @type {string}
@@ -287,6 +293,12 @@ export interface Inventory {
      * @memberof Inventory
      */
     's3Key'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Inventory
+     */
+    's3Url'?: string;
     /**
      * 
      * @type {User}
@@ -429,19 +441,6 @@ export interface PasswordReset {
      * @memberof PasswordReset
      */
     'updatedAt'?: string;
-}
-/**
- * 
- * @export
- * @interface SuccessDto
- */
-export interface SuccessDto {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SuccessDto
-     */
-    'success': boolean;
 }
 /**
  * 
@@ -905,39 +904,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        inventoryControllerPostLogo: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('inventoryControllerPostLogo', 'id', id)
-            const localVarPath = `/api/inventory/{id}/image`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
          * @param {Inventory} inventory 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -957,6 +923,147 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             }
 
             const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(inventory, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        publicInventoryControllerGet: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('publicInventoryControllerGet', 'id', id)
+            const localVarPath = `/api/public/inventory/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {any} [search] 
+         * @param {any} [pagesize] 
+         * @param {any} [pagingkey] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        publicInventoryControllerGetDashboard: async (search?: any, pagesize?: any, pagingkey?: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/public/inventory/dashboard`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+
+            if (pagesize !== undefined) {
+                localVarQueryParameter['pagesize'] = pagesize;
+            }
+
+            if (pagingkey !== undefined) {
+                localVarQueryParameter['pagingkey'] = pagingkey;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        publicInventoryControllerIndex: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/public/inventory`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {Inventory} inventory 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        publicInventoryControllerPost: async (inventory: Inventory, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'inventory' is not null or undefined
+            assertParamExists('publicInventoryControllerPost', 'inventory', inventory)
+            const localVarPath = `/api/public/inventory`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -1403,22 +1510,53 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} id 
+         * @param {Inventory} inventory 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async inventoryControllerPostLogo(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Inventory>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.inventoryControllerPostLogo(id, options);
+        async inventoryControllerPut(id: string, inventory: Inventory, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Inventory>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.inventoryControllerPut(id, inventory, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async publicInventoryControllerGet(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Inventory>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.publicInventoryControllerGet(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {any} [search] 
+         * @param {any} [pagesize] 
+         * @param {any} [pagingkey] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async publicInventoryControllerGetDashboard(search?: any, pagesize?: any, pagingkey?: any, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InventorySearchDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.publicInventoryControllerGetDashboard(search, pagesize, pagingkey, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async publicInventoryControllerIndex(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Inventory>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.publicInventoryControllerIndex(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @param {Inventory} inventory 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async inventoryControllerPut(id: string, inventory: Inventory, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.inventoryControllerPut(id, inventory, options);
+        async publicInventoryControllerPost(inventory: Inventory, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Inventory>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.publicInventoryControllerPost(inventory, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1622,21 +1760,49 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        inventoryControllerPostLogo(id: string, options?: any): AxiosPromise<Inventory> {
-            return localVarFp.inventoryControllerPostLogo(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} id 
          * @param {Inventory} inventory 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        inventoryControllerPut(id: string, inventory: Inventory, options?: any): AxiosPromise<SuccessDto> {
+        inventoryControllerPut(id: string, inventory: Inventory, options?: any): AxiosPromise<Inventory> {
             return localVarFp.inventoryControllerPut(id, inventory, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        publicInventoryControllerGet(id: string, options?: any): AxiosPromise<Inventory> {
+            return localVarFp.publicInventoryControllerGet(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {any} [search] 
+         * @param {any} [pagesize] 
+         * @param {any} [pagingkey] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        publicInventoryControllerGetDashboard(search?: any, pagesize?: any, pagingkey?: any, options?: any): AxiosPromise<InventorySearchDto> {
+            return localVarFp.publicInventoryControllerGetDashboard(search, pagesize, pagingkey, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        publicInventoryControllerIndex(options?: any): AxiosPromise<Array<Inventory>> {
+            return localVarFp.publicInventoryControllerIndex(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {Inventory} inventory 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        publicInventoryControllerPost(inventory: Inventory, options?: any): AxiosPromise<Inventory> {
+            return localVarFp.publicInventoryControllerPost(inventory, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1852,17 +2018,6 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @param {string} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public inventoryControllerPostLogo(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).inventoryControllerPostLogo(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} id 
      * @param {Inventory} inventory 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1870,6 +2025,51 @@ export class DefaultApi extends BaseAPI {
      */
     public inventoryControllerPut(id: string, inventory: Inventory, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).inventoryControllerPut(id, inventory, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public publicInventoryControllerGet(id: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).publicInventoryControllerGet(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {any} [search] 
+     * @param {any} [pagesize] 
+     * @param {any} [pagingkey] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public publicInventoryControllerGetDashboard(search?: any, pagesize?: any, pagingkey?: any, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).publicInventoryControllerGetDashboard(search, pagesize, pagingkey, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public publicInventoryControllerIndex(options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).publicInventoryControllerIndex(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {Inventory} inventory 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public publicInventoryControllerPost(inventory: Inventory, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).publicInventoryControllerPost(inventory, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

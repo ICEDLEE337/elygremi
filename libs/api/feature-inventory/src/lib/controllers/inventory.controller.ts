@@ -36,8 +36,8 @@ export class InventoryController {
   @Get(':id')
   @ApiParam({ name: 'id', type: 'string' })
   @ApiResponse({ type: Inventory })
-  async get(@Param('id') azVehicleId: string): Promise<Inventory> {
-    return await this.inventorySvc.get(azVehicleId);
+  async get(@Param('id') id: string): Promise<Inventory> {
+    return await this.inventorySvc.get(id);
   }
 
   @Get()
@@ -60,9 +60,9 @@ export class InventoryController {
   @UseInterceptors(FilesInterceptor('files[]', 1))
   @ApiBody({ type: Inventory })
   @ApiResponse({ type: Inventory })
-  async put(@Param('id') azVehicleId: string, @Body() rawBody: any, @UploadedFiles() files?: Array<Express.Multer.File>): Promise<Inventory> {
+  async put(@Param('id') id: string, @Body() rawBody: any, @UploadedFiles() files?: Array<Express.Multer.File>): Promise<Inventory> {
     const body = parseBody<Inventory>(rawBody);
 
-    return await this.inventorySvc.put(azVehicleId, body, files?.length ? files[0] : undefined)
+    return await this.inventorySvc.put(id, body, files?.length ? files[0] : undefined)
   }
 }

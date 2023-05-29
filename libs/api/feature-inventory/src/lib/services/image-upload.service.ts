@@ -8,16 +8,16 @@ export class ImageUploadService {
   constructor(private inventoryRepo: InventoryRepository, private s3Svc: S3Service) { }
 
   async putInventoryImageByInventoryId(
-    azVehicleId: string,
+    id: string,
     files?: Array<Express.Multer.File>
   ) {
-    if (files?.length) {
+    if (files?.length && files[0]) {
       const { key } = await this.uploadAttachment(``, files[0]);
 
-      await this.inventoryRepo.put({ azVehicleId }, { s3Key: key })
+      await this.inventoryRepo.put({ id }, { s3Key: key })
     }
 
-    return await this.inventoryRepo.getOne({ where: { azVehicleId } });
+    return await this.inventoryRepo.getOne({ where: { id } });
   }
 
   private async uploadAttachment(path: string, file: Express.Multer.File) {
