@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AuthGuard, versionRoute } from '@oninet/ui/common';
+import { versionRoute } from '@oninet/ui/common';
 import { AppShellPageComponent } from './pages/app-shell-page/app-shell-page.component';
 import { CodeComponent } from './pages/code/code.component';
 import { EmailComponent } from './pages/email/email.component';

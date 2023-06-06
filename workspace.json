@@ -14,6 +14,7 @@
     "lib-ui-angular-serializable-forms": "libs/ui/angular-serializable-forms",
     "lib-ui-common": "libs/ui/common",
     "lib-ui-inventory": "libs/ui-inventory",
-    "ui-account": "apps/ui/account"
+    "ui-account": "apps/ui/account",
+    "ui-account-embedded": "apps/ui/account-embedded"
   }
 }

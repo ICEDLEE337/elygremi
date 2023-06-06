@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { InventoryPageComponent } from './pages/inventory-page/inventory-page.component';
+import { InventoryPageComponent } from '@oninet/ui-inventory';
 
 export const routes: Routes = [
   { path: '', component: InventoryPageComponent, pathMatch: 'full' },

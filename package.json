@@ -11,6 +11,7 @@
     "docker:account": "docker run -p 3456:3456 --env=\"PORT=3456\" --env-file=.env 747533038441.dkr.ecr.us-east-2.amazonaws.com/oninet:api-account",
     "api-account": "PORT=3456 nx run api-account:serve",
     "ui-account": "nx serve ui-account --port 4456",
+    "ui-account-embedded": "nx serve ui-account-embedded --port 4457",
     "gen:app:api": "nx g @nrwl/nest:application --directory api",
     "gen:app:lambda": "nx g @nrwl/nest:application --directory lambda",
     "gen:app:cli": "nx g @nrwl/nest:application --directory cli",

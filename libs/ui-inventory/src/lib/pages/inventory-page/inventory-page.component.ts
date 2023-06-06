@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaseComponent, OninetCookieService } from '@oninet/ui/common';
 import { MatDialog } from '@angular/material/dialog';
-import { environment } from '../../../environments/environment';
 import { DefaultApi } from '@oninet/generated/account';
 import { InventorySearchService } from '../../services/inventory-search.service';
-import { InventoryDialogComponent } from '../../components/inventory-dialog/inventory-dialog.component';
 import { tap } from 'rxjs';
+import { InventoryDialogComponent } from '../../components/inventory-dialog/inventory-dialog.component';
 
 @Component({
+  selector: 'oninet-inventory-page',
   templateUrl: './inventory-page.component.html'
 })
 export class InventoryPageComponent extends BaseComponent implements OnInit {
@@ -24,7 +24,8 @@ export class InventoryPageComponent extends BaseComponent implements OnInit {
       this.busy$$.next(true);
     }
 
-  doxUrl = `${environment.api}/dox`;
+  // doxUrl = `${environment.api}/dox`;
+  doxUrl = `need-to-configure-thissss/dox`;
   closeModal$ = this.inventorySearchService.data$.pipe(tap(() => this.dialog.closeAll()))
 
   async ngOnInit() {
