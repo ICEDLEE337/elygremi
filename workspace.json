@@ -13,6 +13,7 @@
     "lib-api-repository-oninet": "libs/api/repository-oninet",
     "lib-ui-angular-serializable-forms": "libs/ui/angular-serializable-forms",
     "lib-ui-common": "libs/ui/common",
+    "lib-ui-inventory": "libs/ui-inventory",
     "ui-account": "apps/ui/account"
   }
 }
