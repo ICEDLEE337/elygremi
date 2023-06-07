@@ -11,7 +11,7 @@ import { ApiParam, ApiResponse } from '@nestjs/swagger';
 import { configureEnv } from '@oninet/api/configuration';
 import { UrlDto } from '@onivoro/server-common';
 
-@UseGuards(AuthGuard)
+////@UseGuards(AuthGuard)
 @Controller('file')
 export class FileController {
   bucket = configureEnv().AWS_BUCKET_UPLOADS;

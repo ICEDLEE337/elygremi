@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'oninet-root',
+  selector: '#content',
+  // selector: '[oninet-root]',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

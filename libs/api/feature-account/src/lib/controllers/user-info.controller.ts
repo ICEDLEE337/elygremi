@@ -3,7 +3,7 @@ import { AccessToken, AccessTokenDto, AuthGuard, IAccessToken, UserId } from '@o
 import { ApiResponse } from '@nestjs/swagger';
 import { User, UserService } from '@oninet/api/repository-oninet';
 
-@UseGuards(AuthGuard)
+////@UseGuards(AuthGuard)
 @Controller('user-info')
 export class UserInfoController {
   constructor(

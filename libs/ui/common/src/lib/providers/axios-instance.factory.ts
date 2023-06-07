@@ -28,8 +28,8 @@ export function axiosInstanceFactory(
     (err) => {
       console.warn({ err, msg: 'axiosInstanceFactory error' })
       if (err?.response.status === 403) {
-        cookieService.deleteSessionTokens();
-        window.location.href = redirectSvc.getLoginRedirectUrl();
+        // cookieService.deleteSessionTokens();
+        // window.location.href = redirectSvc.getLoginRedirectUrl();
       }
 
       return err;

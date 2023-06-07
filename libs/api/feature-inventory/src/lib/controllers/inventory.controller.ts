@@ -8,7 +8,7 @@ import { FilesInterceptor } from '@nestjs/platform-express';
 import { ImageUploadService } from '../services/image-upload.service';
 import { InventoryService } from '../services/inventory.service';
 
-@UseGuards(AuthGuard)
+////@UseGuards(AuthGuard)
 @Controller('inventory')
 export class InventoryController {
   constructor(
