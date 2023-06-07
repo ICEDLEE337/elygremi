@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { InventoryPageComponent } from './pages/inventory-page/inventory-page.component';
 import { DownloadButtonComponent } from './components/download-button/download-button.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
@@ -26,21 +26,12 @@ const declarations = [...components, ...pages];
 
 @NgModule({
   declarations,
-  exports: declarations,
-  imports: [
-    CommonModule,
-    MaterialModule,
-    UiCommonModule
-  ],
-})
-export class UiInventoryModule {
-  static configure (config: Config) {
-    return {
-      ngModule: UiInventoryModule,
-      imports: [UiCommonModule.configure(config)],
-      providers: [
-        accountApiProvider(config),
+      exports: declarations,
+      imports: [
+        CommonModule,
+        MaterialModule,
+        UiCommonModule
       ],
-    };
-  }
-}
+      entryComponents: [InventoryPageComponent],
+})
+export class UiInventoryModule {}

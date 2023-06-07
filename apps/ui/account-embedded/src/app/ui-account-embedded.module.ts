@@ -3,11 +3,13 @@ import { AppComponent } from './components/app/app.component';
 import { accountApiProvider, MaterialModule, UiCommonModule } from '@oninet/ui/common';
 import { environment } from '../environments/environment';
 import { UiInventoryModule } from '@oninet/ui-inventory';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
-    UiCommonModule.configure(environment),
+    CommonModule,
     MaterialModule,
+    UiCommonModule.configure(environment),
     UiInventoryModule,
   ],
   providers: [
@@ -15,6 +17,7 @@ import { UiInventoryModule } from '@oninet/ui-inventory';
       environment
     ),
   ],
+  declarations: [AppComponent],
   bootstrap: [AppComponent],
 })
 export class UiAccountEmbeddedModule {}

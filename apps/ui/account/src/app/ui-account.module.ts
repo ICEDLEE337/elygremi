@@ -14,6 +14,7 @@ import { PasswordComponent } from './pages/password/password.component';
 import { PhoneComponent } from './pages/phone/phone.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { CommonModule } from '@angular/common';
 
 const pages = [
   AppShellPageComponent,
@@ -30,10 +31,12 @@ const pages = [
 @NgModule({
   declarations: [AppComponent, ...pages],
   imports: [
-    UiCommonModule.configure(environment),
+    CommonModule,
     MaterialModule,
     RoutingModule,
-    UiInventoryModule.configure(environment),
+    UiCommonModule,
+    UiCommonModule.configure(environment),
+    UiInventoryModule,
   ],
   providers: [
     accountApiProvider(

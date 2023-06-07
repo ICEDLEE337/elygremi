@@ -6,10 +6,11 @@ import { DefaultApi } from '@oninet/generated/account';
 import { InventorySearchService } from '../../services/inventory-search.service';
 import { tap } from 'rxjs';
 import { InventoryDialogComponent } from '../../components/inventory-dialog/inventory-dialog.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'oninet-inventory-page',
-  templateUrl: './inventory-page.component.html'
+  templateUrl: './inventory-page.component.html',
 })
 export class InventoryPageComponent extends BaseComponent implements OnInit {
 
