@@ -9,8 +9,9 @@ import { InventoryFormComponent } from './components/inventory-form/inventory-fo
 import { InventoryTableComponent } from './components/inventory-table/inventory-table.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { Config, MaterialModule, UiCommonModule, accountApiProvider } from '@oninet/ui/common';
+import { SchematicPageComponent } from './pages/schematic-page/schematic-page.component';
 
-const pages = [InventoryPageComponent];
+const pages = [InventoryPageComponent, SchematicPageComponent];
 
 const components = [
   DownloadButtonComponent,
