@@ -1,4 +1,4 @@
-import { Component, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
+import { AfterViewInit, Component, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaseComponent, OninetCookieService } from '@oninet/ui/common';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,12 +6,13 @@ import { DefaultApi } from '@oninet/generated/account';
 import { InventorySearchService } from '../../services/inventory-search.service';
 import { tap } from 'rxjs';
 import { InventoryDialogComponent } from '../../components/inventory-dialog/inventory-dialog.component';
+import * as panzoom from "panzoom";
 
 @Component({
   selector: 'oninet-schematic-page',
   templateUrl: './schematic-page.component.html'
 })
-export class SchematicPageComponent extends BaseComponent implements OnInit {
+export class SchematicPageComponent extends BaseComponent implements OnInit, AfterViewInit {
 
     constructor(
       private router: Router,
@@ -23,6 +24,10 @@ export class SchematicPageComponent extends BaseComponent implements OnInit {
       super();
       this.busy$$.next(true);
     }
+
+  ngAfterViewInit(): void {
+    panzoom.default(document.querySelector('#svg') as any);
+  }
 
   closeModal$ = this.inventorySearchService.data$.pipe(tap(() => this.dialog.closeAll()))
 
