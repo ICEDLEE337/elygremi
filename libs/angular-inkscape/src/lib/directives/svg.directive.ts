@@ -1,4 +1,5 @@
 import { Directive, ElementRef, HostListener, OnInit } from "@angular/core";
+import { SvgService } from "../services/svg.service";
 
 // https://angular.io/guide/attribute-directives
 
@@ -10,7 +11,7 @@ export class SvgDirective implements OnInit {
     _paths: HTMLBaseElement[] | undefined;
     _title: HTMLBaseElement | undefined;
 
-    constructor(private el: ElementRef) { }
+    constructor(private el: ElementRef, private svgSvc: SvgService) { }
 
     get children() {
         if (!this._children) {
@@ -64,7 +65,7 @@ export class SvgDirective implements OnInit {
 
     @HostListener('mouseenter') onMouseEnter() {
         if (this.processable) {
-            this.highlight('yellow');
+            this.highlight(this.svgSvc.colorHighlight$$.value);
         }
     }
 
@@ -76,9 +77,8 @@ export class SvgDirective implements OnInit {
 
     @HostListener('click') onClick() {
         if (this.processable) {
-            this.highlight('hotpink');
-            console.warn(this.title?.textContent);
-            console.warn(this.data);
+            this.highlight(this.svgSvc.colorHighlight$$.value);
+            this.svgSvc.data$$.next(this.data);
         }
     }
 

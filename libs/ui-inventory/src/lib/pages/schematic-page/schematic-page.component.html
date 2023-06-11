@@ -1,15 +1,4 @@
-<mat-toolbar class="mat-elevation-z8">
-  <div class="flex flex-row justify-between items-center w-full gap-4">
-
-    <div class="inline-flex header items-center justify-start gap-4">
-      <oninet-logo></oninet-logo>
-      <h1 class="hidden md:block">ONIVORO.NET</h1>
-    </div>
-
-    <div class="text-xl">Schematic Example</div>
-  </div>
-</mat-toolbar>
-
+{{svgSvc.data$ | async}}
 <div id="svg" class="w-full pt-2">
 
   <svg

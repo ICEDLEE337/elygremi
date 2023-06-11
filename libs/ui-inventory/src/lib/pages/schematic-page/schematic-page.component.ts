@@ -7,6 +7,7 @@ import { InventorySearchService } from '../../services/inventory-search.service'
 import { tap } from 'rxjs';
 import { InventoryDialogComponent } from '../../components/inventory-dialog/inventory-dialog.component';
 import * as panzoom from "panzoom";
+import { SvgService } from '@onivoro/angular-inkscape';
 
 @Component({
   selector: 'oninet-schematic-page',
@@ -19,7 +20,8 @@ export class SchematicPageComponent extends BaseComponent implements OnInit, Aft
       private cookieService: OninetCookieService,
       private dialog: MatDialog,
       public inventorySearchService: InventorySearchService,
-      public api: DefaultApi
+      public api: DefaultApi,
+      public svgSvc: SvgService,
     ) {
       super();
       this.busy$$.next(true);
