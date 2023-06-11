@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaseComponent, OninetCookieService } from '@oninet/ui/common';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,11 +6,10 @@ import { DefaultApi } from '@oninet/generated/account';
 import { InventorySearchService } from '../../services/inventory-search.service';
 import { tap } from 'rxjs';
 import { InventoryDialogComponent } from '../../components/inventory-dialog/inventory-dialog.component';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'oninet-schematic-page',
-  templateUrl: './schematic-page.component.html',
+  templateUrl: './schematic-page.component.html'
 })
 export class SchematicPageComponent extends BaseComponent implements OnInit {
 
@@ -25,8 +24,6 @@ export class SchematicPageComponent extends BaseComponent implements OnInit {
       this.busy$$.next(true);
     }
 
-  // doxUrl = `${environment.api}/dox`;
-  doxUrl = `need-to-configure-thissss/dox`;
   closeModal$ = this.inventorySearchService.data$.pipe(tap(() => this.dialog.closeAll()))
 
   async ngOnInit() {
