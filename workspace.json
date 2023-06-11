@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "angular-inkscape": "libs/angular-inkscape",
     "api-account": "apps/api/account",
     "cli-oninet": "apps/cli/oninet",
     "generated-account": "libs/generated/account",

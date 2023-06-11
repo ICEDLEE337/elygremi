@@ -33,7 +33,8 @@
       "@oninet/ui/angular-serializable-forms": [
         "libs/ui/angular-serializable-forms/src/index.ts"
       ],
-      "@oninet/ui/common": ["libs/ui/common/src/index.ts"]
+      "@oninet/ui/common": ["libs/ui/common/src/index.ts"],
+      "@onivoro/angular-inkscape": ["libs/angular-inkscape/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -10,7 +10,7 @@ import { InventoryTableComponent } from './components/inventory-table/inventory-
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { Config, MaterialModule, UiCommonModule, accountApiProvider } from '@oninet/ui/common';
 import { SchematicPageComponent } from './pages/schematic-page/schematic-page.component';
-import { SvgDirective } from './directives/svg.directive';
+import { AngularInkscapeModule } from '@onivoro/angular-inkscape';
 
 const pages = [InventoryPageComponent, SchematicPageComponent];
 
@@ -24,17 +24,16 @@ const components = [
   InventoryCardComponent,
 ];
 
-const directives = [
-  SvgDirective
-];
+const directives: any[] = [];
 
 const declarations = [...components, ...pages, ...directives];
 
 @NgModule({
-  schemas: [NO_ERRORS_SCHEMA],
   declarations,
       exports: declarations,
+      schemas: [NO_ERRORS_SCHEMA],
       imports: [
+        AngularInkscapeModule,
         CommonModule,
         MaterialModule,
         UiCommonModule

@@ -55,7 +55,6 @@ export class SvgDirective implements OnInit {
     }
 
     ngOnInit(): void {
-        console.warn(this.el.nativeElement.id);
         const id = this.el.nativeElement.id;
         if (id && id.includes('sku')) {
             this.processable = true;
