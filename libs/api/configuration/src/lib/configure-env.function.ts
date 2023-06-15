@@ -7,6 +7,11 @@ export function configureEnv(): { [key in EnvVarKey]: any } {
   const { env } = process;
 
   return {
+    [EnvVarKey.AKANEO_CLIENT_ID]: env[EnvVarKey.AKANEO_CLIENT_ID],
+    [EnvVarKey.AKANEO_CLIENT_SECRET]: env[EnvVarKey.AKANEO_CLIENT_SECRET],
+    [EnvVarKey.AKANEO_HOST]: env[EnvVarKey.AKANEO_HOST],
+    [EnvVarKey.AKANEO_PASSWORD]: env[EnvVarKey.AKANEO_PASSWORD],
+    [EnvVarKey.AKANEO_USERNAME]: env[EnvVarKey.AKANEO_USERNAME],
     [EnvVarKey.AWS_ACCESS_KEY_ID]: env[EnvVarKey.AWS_ACCESS_KEY_ID],
     [EnvVarKey.AWS_BUCKET_UPLOADS]:
       env[EnvVarKey.AWS_BUCKET_UPLOADS],

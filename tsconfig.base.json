@@ -29,6 +29,7 @@
         "libs/api/repository-oninet/src/index.ts"
       ],
       "@oninet/generated/account": ["libs/generated/account/src/index.ts"],
+      "@oninet/generated/akeneo": ["libs/generated/akeneo/src/index.ts"],
       "@oninet/ui-inventory": ["libs/ui-inventory/src/index.ts"],
       "@oninet/ui/angular-serializable-forms": [
         "libs/ui/angular-serializable-forms/src/index.ts"

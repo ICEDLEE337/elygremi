@@ -6,6 +6,7 @@
     "api-account": "apps/api/account",
     "cli-oninet": "apps/cli/oninet",
     "generated-account": "libs/generated/account",
+    "generated-akaneo": "libs/generated/akeneo",
     "lib-api-configuration": "libs/api/configuration",
     "lib-api-feature-account": "libs/api/feature-account",
     "lib-api-feature-html": "libs/api/feature-html",

@@ -11,8 +11,9 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
 import { Config, MaterialModule, UiCommonModule, accountApiProvider } from '@oninet/ui/common';
 import { SchematicPageComponent } from './pages/schematic-page/schematic-page.component';
 import { AngularInkscapeModule } from '@onivoro/angular-inkscape';
+import { TestPageComponent } from './pages/test-page/test-page.component';
 
-const pages = [InventoryPageComponent, SchematicPageComponent];
+const pages = [InventoryPageComponent, SchematicPageComponent, TestPageComponent];
 
 const components = [
   DownloadButtonComponent,

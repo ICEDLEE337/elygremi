@@ -14,6 +14,7 @@ import { moduleFactory } from '@onivoro/server-common';
 import { configureEnv } from '@oninet/api/configuration';
 import { FileController } from './controllers/file.controller';
 import { ServerAwsS3Module } from '@onivoro/server-aws-s3';
+import { AkeneoProductController } from './controllers/akeneo-product.controller';
 
 @Module({})
 export class ApiFeatureAccountModule {
@@ -30,6 +31,7 @@ export class ApiFeatureAccountModule {
       ],
       controllers: [
         FileController,
+        AkeneoProductController,
         UserClaimController,
         UserInfoController,
         UserInvitationController,
