@@ -20,22 +20,23 @@ export class AkeneoProductController {
 
   constructor(private s3Svc: S3Service) { }
 
+  @Get('/api')
+  async get () {
+    return (await axios.get(`${configureEnv().AKANEO_HOST}/api/rest/v1`)).data;
+  }
+
   @Get('/')
   async index() {
     try {
+      const {
+        AKANEO_HOST,
+      } = configureEnv();
 
-      const Authorization = await getToken();
+      const tokenResponse = await getToken();
 
-      const options = {
-        basePath: configureEnv().AKANEO_HOST,
-        Headers: {
-          Accept: 'application/json',
-          "Content-Type": 'application/json',
-          Authorization
-        }
-      } as any;
+      const axiosInstance = axiosInstanceFactory(tokenResponse?.access_token, AKANEO_HOST)
 
-      const akeneo: ChannelApi = new ChannelApi(options);
+      const akeneo: ChannelApi = new ChannelApi(null, AKANEO_HOST, axiosInstance);
 
       return (await akeneo.getChannels()).data;
     } catch (error: any) {
@@ -47,27 +48,78 @@ export class AkeneoProductController {
 }
 
 async function getToken() {
+
+  const {
+    AKANEO_USERNAME,
+    AKANEO_PASSWORD,
+    AKANEO_CLIENT_ID,
+    AKANEO_CLIENT_SECRET,
+    AKANEO_HOST,
+  } = configureEnv();
+  const body = {
+    grant_type: "password",
+    username: AKANEO_USERNAME,
+    password: AKANEO_PASSWORD
+  };
+
   try {
-    const str = (`${('1_3m3vja8ogl8g8w4s4cksgwgkgg4cwccs0kwow0o4osgwgkowwc')}:${encode('4k8t5gch6yyo8c0c8g4w8s0wcg0g4wsggs0w4o0gs40k0gw8g8')}`);
-    return (await axios.post(`${configureEnv().AKANEO_HOST}/api/oauth/v1/token`,
-      {
-        "grant_type": "password",
-        "username": configureEnv().AKANEO_USERNAME,
-        "password": configureEnv().AKANEO_PASSWORD
-      },
+    const str = encode(`${AKANEO_CLIENT_ID}:${AKANEO_CLIENT_SECRET}`);
+    return (await axios.post(`${AKANEO_HOST}/api/oauth/v1/token`,
+      body,
       {
         headers: {
           Accept: 'application/json',
           "Content-Type": "application/json",
-          "Authorization": `Basic ${str}`,
+          Authorization: `Basic ${str}`,
         }
       })).data;
 
   } catch (error) {
     console.log('failed to get token => ', error);
+    throw error;
   }
 }
 
 function encode (str: string) {
   return Buffer.from(str).toString('base64');
 }
+
+
+export function axiosInstanceFactory(
+  accessToken: string,
+  baseURL: string,
+) {
+
+  const instance = axios.create({baseURL});
+
+  instance.interceptors.request.use(req => {
+
+    if (!req.headers) {
+      req.headers = {};
+    }
+    req.headers['Authorization'] = `Bearer ${accessToken}`;
+    req.headers["Content-Type"] = 'application/json';
+
+    return req;
+  })
+
+  instance.interceptors.response.use(
+    (res) => {
+      console.log(res.config?.url);
+
+      return res;
+    },
+    (err) => {
+      console.warn({ err, msg: 'axiosInstanceFactory error' })
+      // if (err?.response.status === 403) {
+        // cookieService.deleteSessionTokens();
+        // window.location.href = redirectSvc.getLoginRedirectUrl();
+      // }
+
+      return err;
+    }
+  );
+
+  return instance;
+}
+

@@ -161,6 +161,17 @@
         }
       }
     },
+    "/api/akeneo-product/api": {
+      "get": {
+        "operationId": "AkeneoProductController_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/api/akeneo-product": {
       "get": {
         "operationId": "AkeneoProductController_index",
