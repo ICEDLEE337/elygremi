@@ -56,6 +56,7 @@ async function getToken() {
     AKANEO_CLIENT_SECRET,
     AKANEO_HOST,
   } = configureEnv();
+
   const body = {
     grant_type: "password",
     username: AKANEO_USERNAME,
@@ -83,7 +84,6 @@ async function getToken() {
 function encode (str: string) {
   return Buffer.from(str).toString('base64');
 }
-
 
 export function axiosInstanceFactory(
   accessToken: string,
