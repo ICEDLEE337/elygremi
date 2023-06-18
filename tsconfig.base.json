@@ -35,6 +35,7 @@
         "libs/ui/angular-serializable-forms/src/index.ts"
       ],
       "@oninet/ui/common": ["libs/ui/common/src/index.ts"],
+      "@onivoro/angular-akeneo": ["libs/angular-akeneo/src/index.ts"],
       "@onivoro/angular-inkscape": ["libs/angular-inkscape/src/index.ts"]
     }
   },
