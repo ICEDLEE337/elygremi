@@ -243,7 +243,7 @@ export class UserInvitationService {
 
       await this.emailSvc.sendEmail(
         email,
-        `Evolve Email Verification`,
+        `Oninet Email Verification`,
         html,
         ''
       );
@@ -283,7 +283,7 @@ export class UserInvitationService {
 
   private getInvitationEmailHtml(url: string, logoUrl: string) {
     return html(
-      'Welcome to EVOLVE!',
+      'Welcome to Oninet!',
       `Please click the link to proceed with your account setup.`,
       [
         loginButton('VALIDATE EMAIL', url),

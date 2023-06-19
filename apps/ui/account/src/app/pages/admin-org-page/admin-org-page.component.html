@@ -40,11 +40,20 @@
   >
 </div> -->
 
-<!-- <evo-invitation-list
+<oninet-invitation-list
   [invitations]="invites"
   [enableDeleting]="claims?.isSysAdmin"
   (delete)="deleteInvite($event)"
-></evo-invitation-list> -->
+></oninet-invitation-list>
+
+
+<mat-card
+  class="mat-elevation-z8 mw-880 mt-2"
+  *ngIf="org && claims?.isSysAdmin"
+>
+<div>{{org?.apiId}}</div>
+<div>{{org?.apiKey}}</div>
+</mat-card>
 
 <mat-card
   class="mat-elevation-z8 mw-880 mt-2"
@@ -65,7 +74,7 @@
       This will also delete {{ org?.licenses?.length }} licenses.
     </h3>
     <button mat-raised-button (click)="deleteOrg(org)" color="warn">
-      <mat-icon>close</mat-icon> Delete
+      <mat-icon>close</mat-icon> Permanently Delete Without Confirmation
     </button>
   </oninet-busy>
 </mat-card>

@@ -7,9 +7,9 @@ import {
   AdminCognitoService,
 } from '@onivoro/server-aws-auth';
 import { DataSource, In } from 'typeorm';
-import { randomUUID } from 'node:crypto';
 import { EmailService } from '@onivoro/server-aws-ses';
 import { html, pre, p } from '@onivoro/server-html';
+import { getRandomString } from '@onivoro/server-common';
 
 @Injectable()
 export class DirectUserService {
@@ -23,8 +23,7 @@ export class DirectUserService {
     try {
       return await this.dataSource.transaction(async (entityManager) => {
         const userRepo = new UserRepository(entityManager);
-        const uuid = randomUUID();
-        const pw = `E0-${uuid.replace(/-/g, '')}!`;
+        const pw = getRandomString('E0-', '!');
         const { email } = user;
         const userId = await this.cognitoSvc.adminCreateUser(email, pw, {
           email,

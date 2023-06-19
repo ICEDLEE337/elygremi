@@ -21,6 +21,7 @@ import { AdminOrgPageComponent } from './pages/admin-org-page/admin-org-page.com
 import { OrgListComponent } from './components/org-list/org-list.component';
 import { InputFilterFormComponent } from './components/input-filter-form/input-filter-form.component';
 import { SystemOrgsPageComponent } from './pages/system-orgs-page/system-orgs-page.component';
+import { InvitationListComponent } from './components/invitation-list/invitation-list.component';
 
 const pages = [
   AppShellPageComponent,
@@ -40,6 +41,7 @@ const components = [
   DynaOrgFormComponent,
   OrgListComponent,
   InputFilterFormComponent,
+  InvitationListComponent,
 ];
 
 @NgModule({

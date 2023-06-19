@@ -7,7 +7,7 @@ import { SystemOrgsPageComponent } from './pages/system-orgs-page/system-orgs-pa
 export const routes: Routes = [
   { path: 'inventory', component: InventoryPageComponent, pathMatch: 'full' },
   { path: 'system/orgs', component: SystemOrgsPageComponent, pathMatch: 'full' },
-  { path: 'admin/create/org', component: SystemOrgCreatePageComponent, pathMatch: 'full' },
+  { path: 'system/create/org', component: SystemOrgCreatePageComponent, pathMatch: 'full' },
   { path: 'admin/org/:id', component: AdminOrgPageComponent, pathMatch: 'full' },
   { path: 'schematic', component: SchematicPageComponent, pathMatch: 'full' },
   { path: '', redirectTo: 'system/orgs', pathMatch: 'full' },

@@ -52,7 +52,7 @@
     "@onivoro/server-aws-auth": "^0.0.8",
     "@onivoro/server-aws-s3": "^0.0.5",
     "@onivoro/server-aws-ses": "^0.0.2",
-    "@onivoro/server-common": "^0.0.7",
+    "@onivoro/server-common": "^0.0.8",
     "@onivoro/server-html": "^0.0.1",
     "@onivoro/server-parameterization": "^1.0.0",
     "@onivoro/server-process": "^1.24.0",

@@ -3,6 +3,7 @@ import { FindOptionsWhere, In } from 'typeorm';
 
 import { OrgRepository } from '../repositories/org.repository';
 import { Org } from '../entities/org.entity';
+import { getRandomString } from '@onivoro/server-common';
 
 @Injectable()
 export class OrgService {
@@ -43,7 +44,7 @@ export class OrgService {
   }
 
   async createOrg(org: Partial<Org>) {
-    return await this.orgRepo.createOrg(org);
+    return await this.orgRepo.createOrg({...org, apiId: getRandomString('ai_'), apiKey: getRandomString('ak_')});
   }
 
   transformOrg(org: Org, active = true) {

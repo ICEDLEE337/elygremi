@@ -55,17 +55,12 @@ export class DynaOrgFormComponent implements OnInit, IDynaForm<Org> {
           validators: [Validators.pattern(formatRegexes.zip)],
         },
         logoUrl: { label: 'Logo URL', type: 'text', ...urlValidators },
-        codeOfConductUrl: {
-          label: 'Website URL',
-          type: 'text',
-          ...urlValidators,
-        },
       },
       fieldLayout: [
         ['name', 'phone'],
         ['street', 'city'],
         ['state', 'zip'],
-        ['logoUrl', 'codeOfConductUrl'],
+        ['logoUrl'],
       ],
     };
   }
