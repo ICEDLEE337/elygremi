@@ -34,6 +34,22 @@ export class Org {
 
   @ApiPropertyOptional()
   @Column({ nullable: true })
+  akeneoApiId?: string;
+
+  @ApiPropertyOptional()
+  @Column({ nullable: true })
+  akeneoApiKey?: string;
+
+  @ApiProperty()
+  @Column({ nullable: true })
+  apiId: string;
+
+  @ApiProperty()
+  @Column({ nullable: true })
+  apiKey: string;
+
+  @ApiPropertyOptional()
+  @Column({ nullable: true })
   logoUrl?: string;
 
   @ApiPropertyOptional()

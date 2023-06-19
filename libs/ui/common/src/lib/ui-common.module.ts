@@ -25,7 +25,7 @@ import { OptionalDatePipe } from './pipes/optional-date.pipe';
 import { TitlePipe } from './pipes/title.pipe';
 
 import { Config } from './providers/config.class';
-import { SerializableFormsModule } from '@oninet/ui/angular-serializable-forms';
+import { AngularMaterialFormsModule } from '@onivoro/angular-material-forms';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { RedirectService } from './services/redirect.service';
 import { VersionComponent } from './components/version/version.component';
@@ -79,7 +79,7 @@ const declarations = [...components, ...pages, ...pipes];
 
 @NgModule({
   imports: [
-    SerializableFormsModule,
+    AngularMaterialFormsModule,
     CommonModule,
     MaterialModule,
     BrowserModule,
@@ -92,7 +92,7 @@ const declarations = [...components, ...pages, ...pipes];
   providers,
   exports: [
     ...declarations,
-    SerializableFormsModule,
+    AngularMaterialFormsModule,
     CommonModule,
     MaterialModule,
     BrowserModule,

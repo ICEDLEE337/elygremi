@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { catchError, concatMap, map, of, tap } from 'rxjs';
 import { DefaultApi, Invitation, PasswordDto } from '@oninet/generated/account';
 import { BaseComponent, SnackService } from '@oninet/ui/common';
-import { formatRegexes } from '@oninet/ui/angular-serializable-forms';
+import { formatRegexes } from '@onivoro/angular-forms';
 
 @Component({
   templateUrl: './password.component.html',

@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultApi } from '@oninet/generated/account';
 import { BaseComponent, SnackService } from '@oninet/ui/common';
 // import { Invitation } from '@oninet/generated/account';
-import { formatRegexes } from '@oninet/ui/angular-serializable-forms';
+import { formatRegexes } from '@onivoro/angular-forms';
 
 @Component({
   templateUrl: './reset-password.component.html',

@@ -9,7 +9,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { PasswordComponent } from './pages/password/password.component';
 import { PhoneComponent } from './pages/phone/phone.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
-import { SignupComponent } from './pages/signup/signup.component';
 import { routes } from './routes.constant';
 
 @NgModule({
@@ -18,7 +17,6 @@ import { routes } from './routes.constant';
       [
         { path: 'login/:redirect', component: LoginComponent, pathMatch: 'full' },
         { path: 'login', component: LoginComponent, pathMatch: 'full' },
-        { path: 'signup', component: SignupComponent, pathMatch: 'full' },
         { path: 'forgot', component: ForgotComponent, pathMatch: 'full' },
         { path: 'reset/:hash', component: ResetPasswordComponent, pathMatch: 'full' },
         { path: 'email/:hash', component: EmailComponent, pathMatch: 'full' },

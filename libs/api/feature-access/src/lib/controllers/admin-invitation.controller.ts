@@ -15,9 +15,9 @@ import { Invitation, InvitationRepository } from '@oninet/api/repository-oninet'
 
 import { IsSysAdmin } from '../decorators/is-sys-admin.decorator';
 import { OrgId } from '../decorators/org-id.decorator';
-import { UserInvitationService } from './user-invitation.service';
+import { UserInvitationService } from '../services/user-invitation.service';
 
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('admin/invitation')
 export class AdminInvitationController {
   constructor(

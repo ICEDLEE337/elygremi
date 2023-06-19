@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultApi } from '@oninet/generated/account';
-import { formatRegexes } from '@oninet/ui/angular-serializable-forms';
+import { formatRegexes } from '@onivoro/angular-forms';
 import { BaseComponent, SnackService } from '@oninet/ui/common';
 import { catchError, concatMap, from, map, of, tap } from 'rxjs';
 

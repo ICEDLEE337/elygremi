@@ -31,9 +31,6 @@
       "@oninet/generated/account": ["libs/generated/account/src/index.ts"],
       "@oninet/generated/akeneo": ["libs/generated/akeneo/src/index.ts"],
       "@oninet/ui-inventory": ["libs/ui-inventory/src/index.ts"],
-      "@oninet/ui/angular-serializable-forms": [
-        "libs/ui/angular-serializable-forms/src/index.ts"
-      ],
       "@oninet/ui/common": ["libs/ui/common/src/index.ts"],
       "@onivoro/angular-akeneo": ["libs/angular-akeneo/src/index.ts"],
       "@onivoro/angular-inkscape": ["libs/angular-inkscape/src/index.ts"]

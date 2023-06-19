@@ -15,7 +15,8 @@ import { AdminUserService } from './services/admin-user.service';
 import { PasswordResetService } from './services/password-reset.service';
 import { configureEnv } from '@oninet/api/configuration';
 import { RepositoryOninetModule } from '@oninet/api/repository-oninet';
-import { UserInvitationService } from './controllers/user-invitation.service';
+import { UserInvitationService } from './services/user-invitation.service';
+import { UserInvitationController } from './controllers/user-invitation.controller';
 
 @Module({})
 export class ApiFeatureAccessModule {
@@ -30,6 +31,7 @@ export class ApiFeatureAccessModule {
         UserPasswordResetController,
         UserSessionController,
         UserController,
+        UserInvitationController,
       ],
       providers: [
         AdminUserService,

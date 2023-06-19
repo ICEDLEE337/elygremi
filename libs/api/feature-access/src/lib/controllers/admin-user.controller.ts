@@ -27,7 +27,7 @@ const UsersResponse = { type: User, isArray: true };
 const UserIdParam = { type: 'string', name: 'userId' };
 const UserPayload = { type: User };
 
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('admin/user')
 export class AdminUserController {
   constructor(

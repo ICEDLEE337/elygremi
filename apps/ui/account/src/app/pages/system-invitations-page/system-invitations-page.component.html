@@ -1,0 +1,9 @@
+<oninet-busy [busy]="!invitations">
+  <oninet-invitation-list
+    [invitations]="invitations"
+    [enableDeleting]="true"
+    (delete)="deleteInvitation($event)"
+    [enableResending]="true"
+    (resend)="resendService.resend($event.email)"
+  ></oninet-invitation-list>
+</oninet-busy>

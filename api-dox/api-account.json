@@ -780,6 +780,147 @@
         }
       }
     },
+    "/api/user/invitation/{hash}": {
+      "get": {
+        "operationId": "UserInvitationController_get",
+        "parameters": [
+          {
+            "name": "hash",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invitation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/invitation/linkless": {
+      "post": {
+        "operationId": "UserInvitationController_postLinkless",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactInfoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invitation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/invitation/resend": {
+      "post": {
+        "operationId": "UserInvitationController_resendEmail",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/user/invitation": {
+      "post": {
+        "operationId": "UserInvitationController_post",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invitation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/invitation/{hash}/password": {
+      "put": {
+        "operationId": "UserInvitationController_putPassword",
+        "parameters": [
+          {
+            "name": "hash",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invitation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/inventory/dashboard": {
       "get": {
         "operationId": "InventoryController_getDashboard",
@@ -1228,6 +1369,18 @@
           "domain": {
             "type": "string"
           },
+          "akeneoApiId": {
+            "type": "string"
+          },
+          "akeneoApiKey": {
+            "type": "string"
+          },
+          "apiId": {
+            "type": "string"
+          },
+          "apiKey": {
+            "type": "string"
+          },
           "logoUrl": {
             "type": "string"
           },
@@ -1274,7 +1427,9 @@
           "id",
           "active",
           "isAdmin",
-          "name"
+          "name",
+          "apiId",
+          "apiKey"
         ]
       },
       "SuccessDto": {
@@ -1413,6 +1568,28 @@
           "jti",
           "username",
           "cognito:groups"
+        ]
+      },
+      "ContactInfoDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "orgId": {
+            "type": "string"
+          },
+          "isAnon": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "email",
+          "phone",
+          "orgId"
         ]
       },
       "Inventory": {

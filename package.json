@@ -46,6 +46,8 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/serve-static": "^3.0.0",
     "@nestjs/swagger": "^6.1.2",
+    "@onivoro/angular-forms": "^0.0.2",
+    "@onivoro/angular-material-forms": "^0.0.1",
     "@onivoro/isomorphic-common": "^0.0.1",
     "@onivoro/server-aws-auth": "^0.0.8",
     "@onivoro/server-aws-s3": "^0.0.5",

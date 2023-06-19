@@ -4,7 +4,7 @@
       <mat-icon matPrefix>email</mat-icon>
       <input matInput type="text" formControlName="name" placeholder="Email" />
     </mat-form-field>
-    <oninet-error name="name" [form]="formGroup"></oninet-error>
+    <onivoro-error name="name" [form]="formGroup"></onivoro-error>
 
     <mat-form-field appearance="outline">
       <mat-icon matPrefix>password</mat-icon>
@@ -15,7 +15,7 @@
         placeholder="Password"
       />
     </mat-form-field>
-    <oninet-error name="password" [form]="formGroup"></oninet-error>
+    <onivoro-error name="password" [form]="formGroup"></onivoro-error>
 
     <button
       color="primary"
@@ -34,8 +34,7 @@
 
   <div class="bg-primary-dark mt-2 text-primary py-1">
     <div class="flex flex-row items-center justify-between flex-wrap md:flex-nowrap">
-      <a class="grow" mat-button routerLink="/signup">Need an account?</a>
-      <a class="grow" mat-button routerLink="/forgot">Forgot your password?</a>
+      <a class="grow" mat-button routerLink="/forgot">Forgot password?</a>
     </div>
   </div>
 </oninet-modal-page>

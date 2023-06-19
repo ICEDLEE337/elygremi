@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { Config, OninetCookieService, SnackService } from '@oninet/ui/common';
 import { DefaultApi } from '@oninet/generated/account';
-import { formatRegexes } from '@oninet/ui/angular-serializable-forms';
+import { formatRegexes } from '@onivoro/angular-forms';
 
 @Component({
   templateUrl: './login.component.html',

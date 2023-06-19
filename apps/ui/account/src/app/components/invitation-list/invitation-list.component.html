@@ -1,0 +1,78 @@
+<mat-card class="mat-elevation-z8 mw-880">
+  <h2 *ngIf="showTitle">
+    <div class="flex-1 row space-between">
+      <div><mat-icon>outgoing_mail</mat-icon> Pending Invitations</div>
+
+      <button *ngIf="enableCreating" (click)="create.emit()"></button>
+    </div>
+  </h2>
+  <oninet-input-filter-form
+    *ngIf="enableFiltering && invitations?.length"
+    (valueChange)="filterChange($event)"
+  ></oninet-input-filter-form>
+  <div class="py-1 px-0 border-box mw-1" *ngIf="!invitations?.length">
+    There are no pending invitations.
+  </div>
+  <div
+    class="py-1 px-0 border-box mw-1"
+    *ngIf="!filteredInvitations?.length && invitations?.length"
+  >
+    No invitations match that filter criteria.
+  </div>
+  <div
+    class="py-1 px-0 border-box mw-1 flex flex-auto flex-row width-full grow gap-1"
+    *ngFor="let invitation of filteredInvitations"
+  >
+    <ng-container *ngIf="!toDelete[invitation.email]">
+      <button
+        mat-raised-button
+        (click)="initDelete(invitation)"
+        color="warn"
+        *ngIf="enableDeleting"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+
+      <button
+        (click)="edit.emit(invitation)"
+        mat-stroked-button
+        color="primary"
+        *ngIf="enableEditing"
+      >
+        {{ invitation.email }}
+      </button>
+
+      <div *ngIf="!enableEditing" class="flex flex-row items-center">
+        {{ invitation.email }}
+      </div>
+
+      <div class="flex flex-row flex-1 justify-end">
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="resend.emit(invitation)"
+          *ngIf="enableResending"
+        >
+          <mat-icon>refresh</mat-icon>
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="toDelete[invitation.email]">
+      <button
+        mat-stroked-button
+        (click)="cancelDelete(invitation)"
+        color="accent"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      <button
+        mat-raised-button
+        (click)="deleteInvitation(invitation)"
+        color="warn"
+      >
+        <mat-icon>delete</mat-icon> {{ invitation.email }}
+      </button>
+    </ng-container>
+  </div>
+</mat-card>

@@ -1,0 +1,71 @@
+<mat-card class="mat-elevation-z8 mw-880 mb-2">
+  <h2><mat-icon>domain</mat-icon> Organization Details</h2>
+  <oninet-busy [busy]="!org || !claims">
+    <oninet-dyna-org-form
+      *ngIf="org"
+      [data]="org"
+      (valueChange)="valueChange($event)"
+      (statusChange)="statusChange($event)"
+    ></oninet-dyna-org-form>
+
+    <oninet-busy [busy]="busy$ | async">
+      <button
+        color="primary"
+        class="mt-2"
+        mat-raised-button
+        (click)="save()"
+        [disabled]="!valid || !dirty"
+      >
+        <mat-icon>save</mat-icon> Save
+      </button>
+    </oninet-busy>
+  </oninet-busy>
+</mat-card>
+
+<!--
+<div class="mb-2">
+  <evo-user-list
+    [enableCreating]="true"
+    [enableEditing]="true"
+    [enableDeleting]="true"
+    *ngIf="org"
+    [users]="org?.users"
+    (create)="createUser($event)"
+    (delete)="deleteUser($event)"
+    (edit)="editUser($event)"
+  >
+    <button class="mb-1" color="accent" mat-raised-button (click)="addUser()">
+      <mat-icon>health_and_safety</mat-icon>
+    </button></evo-user-list
+  >
+</div> -->
+
+<!-- <evo-invitation-list
+  [invitations]="invites"
+  [enableDeleting]="claims?.isSysAdmin"
+  (delete)="deleteInvite($event)"
+></evo-invitation-list> -->
+
+<mat-card
+  class="mat-elevation-z8 mw-880 mt-2"
+  *ngIf="org && claims?.isSysAdmin"
+>
+  <oninet-busy [busy]="busy$ | async">
+    <h2>
+      <mat-icon>delete</mat-icon> Permanently Delete All Organization Data
+    </h2>
+    <h3>This will delete the organization.</h3>
+    <h3 *ngIf="org?.users?.length">
+      This will also delete {{ org?.users?.length }} organization users.
+    </h3>
+    <h3 *ngIf="anonUsers?.length">
+      This will also delete {{ anonUsers?.length }} anonymous users.
+    </h3>
+    <h3 *ngIf="org?.licenses?.length">
+      This will also delete {{ org?.licenses?.length }} licenses.
+    </h3>
+    <button mat-raised-button (click)="deleteOrg(org)" color="warn">
+      <mat-icon>close</mat-icon> Delete
+    </button>
+  </oninet-busy>
+</mat-card>

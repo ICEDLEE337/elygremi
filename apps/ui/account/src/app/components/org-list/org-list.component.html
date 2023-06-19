@@ -1,0 +1,61 @@
+<mat-card class="mat-elevation-z8 mw-880">
+  <h2>
+    <div class="flex-1 row space-between">
+      <div><mat-icon>domain</mat-icon> Organizations</div>
+      <button
+        *ngIf="enableCreating"
+        class="mb-1"
+        (click)="create.emit()"
+        mat-raised-button
+        color="primary"
+      >
+        <mat-icon>domain_add</mat-icon>
+      </button>
+    </div>
+  </h2>
+  <oninet-input-filter-form
+    (valueChange)="filterChange($event)"
+  ></oninet-input-filter-form>
+  <div class="py-1 px-0 border-box mw-1" *ngIf="!filteredOrgs?.length">
+    No organizations match that filter criteria.
+  </div>
+  <div class="py-1 px-0 border-box mw-1" *ngFor="let org of filteredOrgs">
+    <div class="row">
+      <ng-container *ngIf="!toDelete[org.id]">
+        <div class="flex-none" *ngIf="enableDeleting">
+          <button mat-raised-button (click)="initDelete(org)" color="warn">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        <div class="column items-start justify-start pl-1">
+          <ng-container *ngIf="enableEditing">
+            <button (click)="edit.emit(org)" mat-stroked-button color="primary">
+              {{ org.name }}
+            </button>
+          </ng-container>
+
+          <ng-container *ngIf="!enableEditing">
+            <div class="row items-start">
+              {{ org.name }}
+            </div>
+            <div class="row items-start"></div>
+          </ng-container>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="toDelete[org.id]">
+        <div>
+          <button mat-stroked-button (click)="cancelDelete(org)" color="accent">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        <div class="column items-start justify-start pl-1">
+          <div class="row items-start">
+            <button mat-raised-button (click)="deleteOrg(org)" color="warn">
+              <mat-icon>delete</mat-icon> {{ org.name }}
+            </button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</mat-card>

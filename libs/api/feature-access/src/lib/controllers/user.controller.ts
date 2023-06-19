@@ -12,7 +12,7 @@ import {
   UserService,
 } from '@oninet/api/repository-oninet';
 
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('user')
 export class UserController {
   constructor(

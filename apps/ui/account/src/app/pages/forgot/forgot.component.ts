@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { BaseComponent, SnackService } from '@oninet/ui/common';
 import { DefaultApi } from '@oninet/generated/account';
-import { formatRegexes } from '@oninet/ui/angular-serializable-forms';
+import { formatRegexes } from '@onivoro/angular-forms';
 
 @Component({
   templateUrl: './forgot.component.html',

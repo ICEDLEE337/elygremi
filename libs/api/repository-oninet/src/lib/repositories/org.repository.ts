@@ -18,6 +18,7 @@ export class OrgRepository extends TypeOrmRepository<Org> {
       ...org,
       id,
       name,
+      isAdmin: false
     } as any);
   }
 }

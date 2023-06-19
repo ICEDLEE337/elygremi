@@ -1,0 +1,12 @@
+<oninet-busy [busy]="!org || !user || (busy$ | async)">
+  <oninet-org-list
+  *ngIf="orgs?.length"
+  [orgs]="orgs"
+  [enableCreating]="true"
+  (create)="createOrg()"
+  [enableEditing]="true"
+  (edit)="editOrg($event)"
+  [enableDeleting]="true"
+  (delete)="deleteOrg($event)"
+  ></oninet-org-list>
+</oninet-busy>

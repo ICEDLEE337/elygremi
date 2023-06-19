@@ -12,9 +12,15 @@ import { ForgotComponent } from './pages/forgot/forgot.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PasswordComponent } from './pages/password/password.component';
 import { PhoneComponent } from './pages/phone/phone.component';
-import { SignupComponent } from './pages/signup/signup.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { CommonModule } from '@angular/common';
+import { DynaOrgFormComponent } from './components/dyna-org-form/dyna-org-form.component';
+import { SystemOrgCreatePageComponent } from './pages/system-org-create-page/system-org-create-page.component';
+import { AngularMaterialFormsModule } from '@onivoro/angular-material-forms';
+import { AdminOrgPageComponent } from './pages/admin-org-page/admin-org-page.component';
+import { OrgListComponent } from './components/org-list/org-list.component';
+import { InputFilterFormComponent } from './components/input-filter-form/input-filter-form.component';
+import { SystemOrgsPageComponent } from './pages/system-orgs-page/system-orgs-page.component';
 
 const pages = [
   AppShellPageComponent,
@@ -25,16 +31,25 @@ const pages = [
   PasswordComponent,
   PhoneComponent,
   ResetPasswordComponent,
-  SignupComponent,
+  SystemOrgCreatePageComponent,
+  SystemOrgsPageComponent,
+  AdminOrgPageComponent,
+];
+
+const components = [
+  DynaOrgFormComponent,
+  OrgListComponent,
+  InputFilterFormComponent,
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...pages],
+  declarations: [AppComponent, ...pages, ...components],
   imports: [
     CommonModule,
     MaterialModule,
     RoutingModule,
     UiCommonModule,
+    AngularMaterialFormsModule,
     UiCommonModule.configure(environment),
     UiInventoryModule,
   ],
