@@ -8,4 +8,13 @@ export class UserRepository extends TypeOrmRepository<User> {
   constructor(public entityManager: EntityManager) {
     super(User, entityManager);
   }
+
+  async createUser(user: Partial<User>) {
+    return await this.postOne({
+      ...user,
+      active: true,
+      data: {},
+    } as User);
+  }
+
 }

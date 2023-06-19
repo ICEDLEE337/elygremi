@@ -183,16 +183,35 @@
         }
       }
     },
-    "/api/user-claim": {
+    "/api/admin/invitation": {
+      "get": {
+        "operationId": "AdminInvitationController_index",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Invitation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
-        "operationId": "UserClaimController_post",
+        "operationId": "AdminInvitationController_post",
         "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserIdDto"
+                "$ref": "#/components/schemas/Invitation"
               }
             }
           }
@@ -203,7 +222,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserClaimDto"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Invitation"
+                  }
                 }
               }
             }
@@ -211,10 +233,248 @@
         }
       }
     },
-    "/api/user-info": {
+    "/api/admin/invitation/{email}": {
       "get": {
-        "operationId": "UserInfoController_get",
+        "operationId": "AdminInvitationController_get",
+        "parameters": [
+          {
+            "name": "email",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invitation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/invitation/{invitationId}": {
+      "delete": {
+        "operationId": "AdminInvitationController_delete",
+        "parameters": [
+          {
+            "name": "invitationId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/admin/org": {
+      "get": {
+        "operationId": "AdminOrgController_index",
         "parameters": [],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Org"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "AdminOrgController_post",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/org/{orgId}": {
+      "get": {
+        "operationId": "AdminOrgController_get",
+        "parameters": [
+          {
+            "name": "orgId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "AdminOrgController_put",
+        "parameters": [
+          {
+            "name": "orgId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "AdminOrgController_delete",
+        "parameters": [
+          {
+            "name": "orgId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/org/{orgId}/deactivate": {
+      "put": {
+        "operationId": "AdminOrgController_deactivate",
+        "parameters": [
+          {
+            "name": "orgId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/user": {
+      "get": {
+        "operationId": "AdminUserController_index",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "AdminUserController_post",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
         "responses": {
           "default": {
             "description": "",
@@ -229,30 +489,12 @@
         }
       }
     },
-    "/api/user-info/access-token": {
+    "/api/admin/user/{userId}": {
       "get": {
-        "operationId": "UserInfoController_getAccessToken",
-        "parameters": [],
-        "responses": {
-          "default": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AccessTokenDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/user/invitation/{hash}": {
-      "get": {
-        "operationId": "UserInvitationController_get",
+        "operationId": "AdminUserController_get",
         "parameters": [
           {
-            "name": "hash",
+            "name": "userId",
             "required": true,
             "in": "path",
             "schema": {
@@ -266,48 +508,18 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Invitation"
+                  "$ref": "#/components/schemas/User"
                 }
               }
             }
           }
         }
-      }
-    },
-    "/api/user/invitation": {
-      "post": {
-        "operationId": "UserInvitationController_post",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/EmailDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "default": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Invitation"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/user/invitation/{hash}/password": {
+      },
       "put": {
-        "operationId": "UserInvitationController_putPassword",
+        "operationId": "AdminUserController_put",
         "parameters": [
           {
-            "name": "hash",
+            "name": "userId",
             "required": true,
             "in": "path",
             "schema": {
@@ -317,10 +529,11 @@
         ],
         "requestBody": {
           "required": true,
+          "description": "",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PasswordDto"
+                "$ref": "#/components/schemas/User"
               }
             }
           }
@@ -331,7 +544,38 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Invitation"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "AdminUserController_delete",
+        "parameters": [
+          {
+            "name": "userId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
                 }
               }
             }
@@ -422,6 +666,113 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PasswordReset"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user-session": {
+      "get": {
+        "operationId": "UserSessionController_get",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserIdDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/access-token": {
+      "get": {
+        "operationId": "UserController_getAccessToken",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/{id}": {
+      "get": {
+        "operationId": "UserController_legacyGet",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user": {
+      "get": {
+        "operationId": "UserController_get",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "UserController_put",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
                 }
               }
             }
@@ -776,29 +1127,45 @@
           "url"
         ]
       },
-      "UserIdDto": {
+      "Invitation": {
         "type": "object",
         "properties": {
+          "email": {
+            "type": "string"
+          },
+          "hash": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "emailValid": {
+            "type": "boolean"
+          },
+          "isAdmin": {
+            "type": "boolean"
+          },
+          "orgId": {
+            "type": "string"
+          },
+          "org": {
+            "$ref": "#/components/schemas/Org"
+          },
           "userId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
             "type": "string"
           }
         },
         "required": [
-          "userId"
-        ]
-      },
-      "UserClaimDto": {
-        "type": "object",
-        "properties": {
-          "roles": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "roles"
+          "email",
+          "hash"
         ]
       },
       "User": {
@@ -810,11 +1177,20 @@
           "active": {
             "type": "boolean"
           },
+          "isAdmin": {
+            "type": "boolean"
+          },
           "email": {
             "type": "string"
           },
           "data": {
             "type": "object"
+          },
+          "orgId": {
+            "type": "string"
+          },
+          "org": {
+            "$ref": "#/components/schemas/Org"
           },
           "createdAt": {
             "format": "date-time",
@@ -828,7 +1204,157 @@
         "required": [
           "id",
           "active",
+          "isAdmin",
+          "email",
+          "orgId",
+          "org"
+        ]
+      },
+      "Org": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "isAdmin": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "logoUrl": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "contactName": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "zip": {
+            "type": "string"
+          },
+          "invitations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Invitation"
+            }
+          },
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "active",
+          "isAdmin",
+          "name"
+        ]
+      },
+      "SuccessDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "PasswordReset": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "hash": {
+            "type": "string"
+          },
+          "emailValid": {
+            "type": "boolean"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "hash"
+        ]
+      },
+      "EmailDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "isAnon": {
+            "type": "boolean"
+          }
+        },
+        "required": [
           "email"
+        ]
+      },
+      "PasswordDto": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string"
+          },
+          "confirm": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "password",
+          "confirm"
+        ]
+      },
+      "UserIdDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userId"
         ]
       },
       "AccessTokenDto": {
@@ -887,96 +1413,6 @@
           "jti",
           "username",
           "cognito:groups"
-        ]
-      },
-      "Invitation": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string"
-          },
-          "hash": {
-            "type": "string"
-          },
-          "code": {
-            "type": "string"
-          },
-          "emailValid": {
-            "type": "boolean"
-          },
-          "userId": {
-            "type": "string"
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "updatedAt": {
-            "format": "date-time",
-            "type": "string"
-          }
-        },
-        "required": [
-          "email",
-          "hash"
-        ]
-      },
-      "EmailDto": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string"
-          },
-          "isAnon": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "email"
-        ]
-      },
-      "PasswordDto": {
-        "type": "object",
-        "properties": {
-          "password": {
-            "type": "string"
-          },
-          "confirm": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "password",
-          "confirm"
-        ]
-      },
-      "PasswordReset": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string"
-          },
-          "hash": {
-            "type": "string"
-          },
-          "emailValid": {
-            "type": "boolean"
-          },
-          "userId": {
-            "type": "string"
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "updatedAt": {
-            "format": "date-time",
-            "type": "string"
-          }
-        },
-        "required": [
-          "email",
-          "hash"
         ]
       },
       "Inventory": {

@@ -5,7 +5,7 @@ import { InvitationRepository } from "../repositories/invitation.repository";
 import { UserRepository } from "../repositories/user.repository";
 
 const order = { email: 'asc' as any };
-const relations = { roles: true };
+const relations = { org: true };
 
 @Injectable()
 export class UserService {
@@ -61,5 +61,12 @@ export class UserService {
             active: true,
             data: {},
         } as User);
+    }
+
+    async getUsersByOrgId(orgId: string, active = true): Promise<User[]> {
+        const where: FindOptionsWhere<User> = { orgId, active };
+        return (await this.userRepo.getMany({ where, relations, order })).map((u) =>
+            this.transformUser(u)
+        );
     }
 }

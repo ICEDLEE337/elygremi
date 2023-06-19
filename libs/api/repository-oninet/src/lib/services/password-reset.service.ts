@@ -17,6 +17,7 @@ export class PasswordResetService {
     getByHash(hash: string) {
       throw new Error('Method not implemented.');
     }
+
     constructor(private passwordResetRepo: PasswordResetRepository,
     ) { }
 

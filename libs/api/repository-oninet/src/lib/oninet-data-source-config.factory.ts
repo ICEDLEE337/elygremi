@@ -6,11 +6,12 @@ const {
   PG_HOST: host,
   PG_PASSWORD: password,
   PG_PORT: port,
-  PG_USER: username
+  PG_USER: username,
+  PG_SYNC: synchronize
  } = configureEnv();
 
 export const oninetDataSourceConfigFactory = dataSourceConfigFactory(
   'default',
-  {database: 'oninet', host, password, port, username},
+  {database: 'oninet', host, password, port, username, synchronize},
   entities
 ) as any;

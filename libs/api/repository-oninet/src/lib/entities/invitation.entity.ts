@@ -3,9 +3,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Org } from './org.entity';
 
 @Entity({name: 'invitation'})
 export class Invitation {
@@ -24,6 +27,19 @@ export class Invitation {
   @ApiPropertyOptional({ type: 'boolean' })
   @Column({ type: 'boolean' })
   emailValid: boolean;
+
+  @ApiPropertyOptional({ type: 'boolean' })
+  @Column({ type: 'boolean' })
+  isAdmin: boolean;
+
+  @ApiPropertyOptional()
+  @Column({ nullable: true })
+  orgId?: string;
+
+  @ApiPropertyOptional({ type: () => Org })
+  @ManyToOne(() => Org, (o) => o.id)
+  @JoinColumn()
+  org: Org;
 
   @ApiPropertyOptional()
   @Column({nullable: true})

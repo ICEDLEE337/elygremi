@@ -1,11 +1,11 @@
 import { UserService } from './user.service';
-import { RoleService } from './role.service';
 import { InvitationService } from './invitation.service';
 import { PasswordResetService } from './password-reset.service';
+import { OrgService } from './org.service';
 
 export const services = [
   InvitationService,
+  OrgService,
   PasswordResetService,
-  RoleService,
-  UserService
+  UserService,
 ];

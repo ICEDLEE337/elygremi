@@ -20,11 +20,11 @@
     "paths": {
       "@oninet/api/configuration": ["libs/api/configuration/src/index.ts"],
       "@oninet/api/feature-account": ["libs/api/feature-account/src/index.ts"],
-      "@oninet/api/feature-html": ["libs/api/feature-html/src/index.ts"],
+      "@onivoro/server-html": ["libs/api/feature-html/src/index.ts"],
       "@oninet/api/feature-inventory": [
         "libs/api/feature-inventory/src/index.ts"
       ],
-      "@oninet/api/feature-user": ["libs/api/feature-user/src/index.ts"],
+      "@oninet/api/feature-access": ["libs/api/feature-access/src/index.ts"],
       "@oninet/api/repository-oninet": [
         "libs/api/repository-oninet/src/index.ts"
       ],

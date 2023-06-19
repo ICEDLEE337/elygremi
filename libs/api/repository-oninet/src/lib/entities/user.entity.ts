@@ -3,12 +3,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  ManyToMany,
+  JoinColumn,
+  ManyToOne,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Role } from './role.entity';
-import { Video } from './video.entity';
+import { Org } from './org.entity';
 
 @Entity({name: 'user'})
 export class User {
@@ -20,6 +20,10 @@ export class User {
   @Column({ type: 'boolean' })
   active: boolean;
 
+  @ApiProperty({ type: 'boolean' })
+  @Column({ type: 'boolean' })
+  isAdmin: boolean;
+
   @ApiProperty()
   @Column({ nullable: false })
   email: string;
@@ -27,6 +31,15 @@ export class User {
   @ApiPropertyOptional()
   @Column({ type: 'jsonb', nullable: false })
   data: any;
+
+  @ApiProperty()
+  @Column()
+  orgId: string;
+
+  @ApiProperty({ type: () => Org })
+  @ManyToOne(() => Org, (o) => o.id)
+  @JoinColumn()
+  org: Org;
 
   @ApiPropertyOptional()
   @CreateDateColumn()
@@ -36,19 +49,4 @@ export class User {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToMany(
-    () => Role,
-    (role) => role.users, {
-    cascade: true,
-  }
-  )
-  roles: Role[];
-
-  @ManyToMany(
-    () => Video,
-    (_) => _.users, {
-    cascade: true,
-  }
-  )
-  videos: Video[];
 }

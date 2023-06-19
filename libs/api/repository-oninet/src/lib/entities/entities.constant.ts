@@ -1,15 +1,13 @@
 import { Inventory } from './inventory.entity';
 import { Invitation } from './invitation.entity';
+import { Org } from './org.entity';
 import { PasswordReset } from './password-reset.entity';
-import { Role } from './role.entity';
 import { User } from './user.entity';
-import { Video } from './video.entity';
 
 export const entities = [
-  Invitation,
   Inventory,
+  Invitation,
+  Org,
   PasswordReset,
-  Role,
   User,
-  Video
 ];
